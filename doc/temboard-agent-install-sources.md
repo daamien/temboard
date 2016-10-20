@@ -23,14 +23,12 @@ $ sudo python setup.py install
 
 Creation of directories for configuration and SSL files:
 ```
-$ sudo mkdir /etc/temboard-agent
-$ sudo mkdir /etc/temboard-agent/ssl
+$ sudo mkdir -p /etc/temboard-agent/ssl
 ```
 
 Home directory:
 ```
-$ sudo mkdir /var/lib/temboard-agent
-$ sudo mkdir /var/lib/temboard-agent/main
+$ sudo mkdir -p /var/lib/temboard-agent/main
 ```
 
 Logging directory:
@@ -40,12 +38,12 @@ $ sudo mkdir /var/log/temboard-agent
 
 Copy the sample configuration file:
 ```
-$ sudo cp /usr/share/temboard-agent/temboard-agent.conf.sample /etc/temboard-agent/temboard-agent.conf
+$ sudo cp share/temboard-agent.conf.sample /etc/temboard-agent/temboard-agent.conf
 ```
 
 Copy the logrotate configuration file:
 ```
-$ sudo cp /usr/share/temboard-agent/temboard-agent.logrotate /etc/logrotate.d/temboard-agent
+$ sudo cp share/temboard-agent.logrotate /etc/logrotate.d/temboard-agent
 ```
 
 Change owner and rights:
