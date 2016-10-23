@@ -4,7 +4,7 @@ site_author: www.dalibo.com
 copyright: Copyright 2015-2016 <a href="http://www.dalibo.com">dalibo</a>
 repo_url: https://github.com/dalibo/temboard/tree/master/doc 
 use_directory_urls: false
-docs_dir: .
+docs_dir: doc
 theme: readthedocs
 pages:
 - Home: README.md
