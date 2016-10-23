@@ -1,0 +1,594 @@
+{
+    "docs": [
+        {
+            "location": "/README/index.html", 
+            "text": "Temboard is a powerful mangement tool for PostgreSQL. You can use it monitor, optimize or configure multiple PostgreSQL instances.\n\n\nTemboard is composed of 2 basic elements:\n\n\n\n\n\n\nAn lightweight \nagent\n that you need to install on every PostgreSQL server you want to manage\n\n\n\n\n\n\nA central \nserver\n that will control the agents and collect metrics from them.\n\n\n\n\n\n\nThe Agent\n\n\nThere's 3 different ways to install the agent:\n\n\n\n\nOn Debian\n\n\nOn Red hat\n\n\nFrom source\n\n\n\n\nThen you need to \nConfigure\n it.\n\n\nThe Server\n\n\nThe server can be install following one of these methods:\n\n\n\n\nOn Debian\n\n\nOn Red hat\n\n\nFrom source\n\n\n\n\nThen you want proceed to \nsetup the repository\n.\n\n\nFor the first steps, please read the \nHow to\n.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/README/index.html#the-agent", 
+            "text": "There's 3 different ways to install the agent:   On Debian  On Red hat  From source   Then you need to  Configure  it.", 
+            "title": "The Agent"
+        }, 
+        {
+            "location": "/README/index.html#the-server", 
+            "text": "The server can be install following one of these methods:   On Debian  On Red hat  From source   Then you want proceed to  setup the repository .  For the first steps, please read the  How to .", 
+            "title": "The Server"
+        }, 
+        {
+            "location": "/temboard-agent-install-debian/index.html", 
+            "text": "temBoard agent installation from debian package (jessie)\n\n\nPackage repository setup\n\n\nAdd the temboard repository to the configuration of APT. Create /etc/apt/sources.list.d/temboard.list with the following contents :\n\n\ndeb https://packages.temboard.io/apt/ jessie main\n\n\n\n\nEnsure APT can handle HTTPS:\n\n\n$ sudo apt-get install apt-transport-https\n\n\n\n\nAdd the GPG key of the repository and update the packages list:\n\n\n$ sudo apt-get install wget ca-certificates\n$ wget -q -O - https://packages.temboard.io/apt/265B525B.asc | sudo apt-key add -\n$ sudo apt-get update\n\n\n## Installation\n\n\n\n\n\n$ sudo apt-get install temboard-agent\n\n\n\n## Configuration\n\nBefore starting the agent, see `doc/temboard-agent-configuration.md` for post-installation tasks.\n\n## Operations\n\n### Important files and directories\n\n- /etc/temboard-agent: stores the `temboard-agent.conf` configuration file and SSL certificates\n- /var/lib/temboard-agent: stores the data of the agent\n- /var/log/temboard-agent: stores the logs\n- /var/run/temboard-agent: stores the PID file\n\n\n### Start the agent\n\n\n\n\n\n$ sudo service temboard-agent start\n\n\n\n### Status\n\n\n\n\n\n$ sudo service temboard-agent status\n\n\n\u25cf temboard-agent.service - LSB: Start temboard-agent\n   Loaded: loaded (/etc/init.d/temboard-agent)\n   Active: active (running) since Thu 2016-08-25 15:24:37 CEST; 1min 33s ago\n  Process: 10342 ExecStart=/etc/init.d/temboard-agent start (code=exited, status=0/SUCCESS)\n   CGroup: /system.slice/temboard-agent.service\n           \u251c\u250010346 /usr/bin/python /usr/bin/temboard-agent -c /etc/temboard-agent/temboard-agent.conf -d -p /var/run/postgresql/temboard-agent.pid\n           \u2514\u250010348 /usr/bin/python /usr/bin/temboard-agent -c /etc/temboard-agent/temboard-agent.conf -d -p /var/run/postgresql/temboard-agent.pid\n\n\nAug 25 15:24:37 debian-tbd-agent temboard-agent[10342]: Starting: temboard-agent.\n\n\n\n### Reload configuration\n\n\n\n\n\n$ sudo service temboard-agent reload\n\n\n\n### Stop the agent\n\n\n\n\n\n$ sudo service temboard-agent stop\n\n\n\n## Package building\n\nTo create a new debian package from `temboard-agent` sources, the packages `dpkg-dev` and `debhelper` have to be installed.\n\n\n\n\n$ sudo apt-get install dpkg-dev debhelper\n```\n\n\nThen, you need to go in \ntemboard/temboard-agent/debian\n directory and execute the script \nmake_deb.sh\n. Once the script executed, the .deb file can be found in \ntemboard/\n directory.", 
+            "title": "Install on Debian"
+        }, 
+        {
+            "location": "/temboard-agent-install-debian/index.html#temboard-agent-installation-from-debian-package-jessie", 
+            "text": "", 
+            "title": "temBoard agent installation from debian package (jessie)"
+        }, 
+        {
+            "location": "/temboard-agent-install-debian/index.html#package-repository-setup", 
+            "text": "Add the temboard repository to the configuration of APT. Create /etc/apt/sources.list.d/temboard.list with the following contents :  deb https://packages.temboard.io/apt/ jessie main  Ensure APT can handle HTTPS:  $ sudo apt-get install apt-transport-https  Add the GPG key of the repository and update the packages list:  $ sudo apt-get install wget ca-certificates\n$ wget -q -O - https://packages.temboard.io/apt/265B525B.asc | sudo apt-key add -\n$ sudo apt-get update\n\n\n## Installation  $ sudo apt-get install temboard-agent  \n## Configuration\n\nBefore starting the agent, see `doc/temboard-agent-configuration.md` for post-installation tasks.\n\n## Operations\n\n### Important files and directories\n\n- /etc/temboard-agent: stores the `temboard-agent.conf` configuration file and SSL certificates\n- /var/lib/temboard-agent: stores the data of the agent\n- /var/log/temboard-agent: stores the logs\n- /var/run/temboard-agent: stores the PID file\n\n\n### Start the agent  $ sudo service temboard-agent start  \n### Status  $ sudo service temboard-agent status  \u25cf temboard-agent.service - LSB: Start temboard-agent\n   Loaded: loaded (/etc/init.d/temboard-agent)\n   Active: active (running) since Thu 2016-08-25 15:24:37 CEST; 1min 33s ago\n  Process: 10342 ExecStart=/etc/init.d/temboard-agent start (code=exited, status=0/SUCCESS)\n   CGroup: /system.slice/temboard-agent.service\n           \u251c\u250010346 /usr/bin/python /usr/bin/temboard-agent -c /etc/temboard-agent/temboard-agent.conf -d -p /var/run/postgresql/temboard-agent.pid\n           \u2514\u250010348 /usr/bin/python /usr/bin/temboard-agent -c /etc/temboard-agent/temboard-agent.conf -d -p /var/run/postgresql/temboard-agent.pid  Aug 25 15:24:37 debian-tbd-agent temboard-agent[10342]: Starting: temboard-agent.  \n### Reload configuration  $ sudo service temboard-agent reload  \n### Stop the agent  $ sudo service temboard-agent stop  \n## Package building\n\nTo create a new debian package from `temboard-agent` sources, the packages `dpkg-dev` and `debhelper` have to be installed.  $ sudo apt-get install dpkg-dev debhelper\n```  Then, you need to go in  temboard/temboard-agent/debian  directory and execute the script  make_deb.sh . Once the script executed, the .deb file can be found in  temboard/  directory.", 
+            "title": "Package repository setup"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html", 
+            "text": "temBoard agent installation from rpm package on RHEL / CentOS 5 and later\n\n\nPackage repository setup\n\n\nRHEL / CentOS 5\n\n\nInstall the \npackages.temboard.io\n repository by creating the \n/etc/yum.repos.d/temboard.repo\n file with the following contents:\n\n\n[temboard]\nname=temBoard Packages for Enterprise Linux 5\nbaseurl=https://packages.temboard.io/yum/rhel5/\nenabled=1\ngpgcheck=0\n\n\n\n\nRHEL / CentOS 6\n\n\nInstall the \npackages.temboard.io\n repository by creating the \n/etc/yum.repos.d/temboard.repo\n file with the following contents:\n\n\n[temboard]\nname=temBoard Packages for Enterprise Linux 6\nbaseurl=https://packages.temboard.io/yum/rhel6/\nenabled=1\ngpgcheck=0\n\n\n\n\nRHEL / CentOS 7\n\n\nInstall the \npackages.temboard.io\n repository by creating the \n/etc/yum.repos.d/temboard.repo\n file with the following contents:\n\n\n[temboard]\nname=temBoard Packages for Enterprise Linux 7\nbaseurl=https://packages.temboard.io/yum/rhel7/\nenabled=1\ngpgcheck=0\n\n\n\n\nInstallation\n\n\nWith the YUM repositories set up, the temBoard agent can be installed with \nyum\n:\n\n\n# yum install temboard-agent\n\n\n\n\nConfiguration\n\n\nBefore starting the agent, see \ndoc/temboard-agent-configuration.md\n for post-installation tasks.\n\n\nOperations\n\n\nImportant files and directories\n\n\n\n\n/etc/temboard-agent: stores the \ntemboard-agent.conf\n configuration file and SSL certificates\n\n\n/var/lib/temboard-agent: stores the data of the agent\n\n\n/var/log/temboard-agent: stores the logs\n\n\n/var/run/temboard-agent: stores the PID file\n\n\n\n\nStart the agent\n\n\nOn RHEL / CentOS 5 and 6:\n\n\n$ sudo service temboard-agent start\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n$ sudo systemctl start temboard-agent\n\n\n\n\nStart at boot time\n\n\nOn RHEL / CentOS 5 and 6:\n\n\n# chkconfig temboard-agent on\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl enable temboard-agent\n\n\n\n\nStatus\n\n\nOn RHEL / CentOS 6:\n\n\n# ps auxf | grep temboard-agent\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl status temboard-agent\n\n\n\n\nReload configuration\n\n\nOn RHEL / CentOS 6:\n\n\n# service temboard-agent reload\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl reload temboard-agent\n\n\n\n\nStop\n\n\nOn RHEL / CentOS 6:\n\n\n# service temboard-agent stop\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl stop temboard-agent", 
+            "title": "Install On Red Hat"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#temboard-agent-installation-from-rpm-package-on-rhel-centos-5-and-later", 
+            "text": "", 
+            "title": "temBoard agent installation from rpm package on RHEL / CentOS 5 and later"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#package-repository-setup", 
+            "text": "", 
+            "title": "Package repository setup"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#rhel-centos-5", 
+            "text": "Install the  packages.temboard.io  repository by creating the  /etc/yum.repos.d/temboard.repo  file with the following contents:  [temboard]\nname=temBoard Packages for Enterprise Linux 5\nbaseurl=https://packages.temboard.io/yum/rhel5/\nenabled=1\ngpgcheck=0", 
+            "title": "RHEL / CentOS 5"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#rhel-centos-6", 
+            "text": "Install the  packages.temboard.io  repository by creating the  /etc/yum.repos.d/temboard.repo  file with the following contents:  [temboard]\nname=temBoard Packages for Enterprise Linux 6\nbaseurl=https://packages.temboard.io/yum/rhel6/\nenabled=1\ngpgcheck=0", 
+            "title": "RHEL / CentOS 6"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#rhel-centos-7", 
+            "text": "Install the  packages.temboard.io  repository by creating the  /etc/yum.repos.d/temboard.repo  file with the following contents:  [temboard]\nname=temBoard Packages for Enterprise Linux 7\nbaseurl=https://packages.temboard.io/yum/rhel7/\nenabled=1\ngpgcheck=0", 
+            "title": "RHEL / CentOS 7"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#installation", 
+            "text": "With the YUM repositories set up, the temBoard agent can be installed with  yum :  # yum install temboard-agent", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#configuration", 
+            "text": "Before starting the agent, see  doc/temboard-agent-configuration.md  for post-installation tasks.", 
+            "title": "Configuration"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#operations", 
+            "text": "", 
+            "title": "Operations"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#important-files-and-directories", 
+            "text": "/etc/temboard-agent: stores the  temboard-agent.conf  configuration file and SSL certificates  /var/lib/temboard-agent: stores the data of the agent  /var/log/temboard-agent: stores the logs  /var/run/temboard-agent: stores the PID file", 
+            "title": "Important files and directories"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#start-the-agent", 
+            "text": "On RHEL / CentOS 5 and 6:  $ sudo service temboard-agent start  On RHEL / CentOS 7:  $ sudo systemctl start temboard-agent", 
+            "title": "Start the agent"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#start-at-boot-time", 
+            "text": "On RHEL / CentOS 5 and 6:  # chkconfig temboard-agent on  On RHEL / CentOS 7:  # systemctl enable temboard-agent", 
+            "title": "Start at boot time"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#status", 
+            "text": "On RHEL / CentOS 6:  # ps auxf | grep temboard-agent  On RHEL / CentOS 7:  # systemctl status temboard-agent", 
+            "title": "Status"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#reload-configuration", 
+            "text": "On RHEL / CentOS 6:  # service temboard-agent reload  On RHEL / CentOS 7:  # systemctl reload temboard-agent", 
+            "title": "Reload configuration"
+        }, 
+        {
+            "location": "/temboard-agent-install-rpm/index.html#stop", 
+            "text": "On RHEL / CentOS 6:  # service temboard-agent stop  On RHEL / CentOS 7:  # systemctl stop temboard-agent", 
+            "title": "Stop"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html", 
+            "text": "temBoard agent installation from sources and configuration\n\n\nDependencies\n\n\n\n\npython\n \n \n2.7\n\n\npython-setuptools\n \n \n0.6\n\n\n\n\nInstallation\n\n\nTo install Python \nsetuptools\n with \npip\n:\n\n\n$ sudo pip install setuptools\n\n\n\n\nProceed with the installation of the agent:\n\n\n$ cd temboard/temboard-agent/\n$ sudo python setup.py install\n\n\n\n\nPrepare directories and files\n\n\nCreation of directories for configuration and SSL files:\n\n\n$ sudo mkdir /etc/temboard-agent\n$ sudo mkdir /etc/temboard-agent/ssl\n\n\n\n\nHome directory:\n\n\n$ sudo mkdir /var/lib/temboard-agent\n$ sudo mkdir /var/lib/temboard-agent/main\n\n\n\n\nLogging directory:\n\n\n$ sudo mkdir /var/log/temboard-agent\n\n\n\n\nCopy the sample configuration file:\n\n\n$ sudo cp /usr/share/temboard-agent/temboard-agent.conf.sample /etc/temboard-agent/temboard-agent.conf\n\n\n\n\nCopy the logrotate configuration file:\n\n\n$ sudo cp /usr/share/temboard-agent/temboard-agent.logrotate /etc/logrotate.d/temboard-agent\n\n\n\n\nChange owner and rights:\n\n\n$ sudo chown -R postgres.postgres /var/lib/temboard-agent\n$ sudo chown postgres.postgres /var/log/temboard-agent\n$ sudo chown -R postgres.postgres /etc/temboard-agent\n$ sudo chmod 0600 /etc/temboard-agent/temboard-agent.conf\n\n\n\n\nConfiguration\n\n\nBefore starting the agent, see \ndoc/temboard-agent-configuration.md\n for post-installation tasks.\n\n\nOperating the agent\n\n\nStart\n\n\n$ sudo -u postgres temboard-agent -d -p /var/lib/temboard-agent/main/temboard-agent.pid\n\n\n\n\nStop\n\n\n$ sudo kill $(cat /var/lib/temboard-agent/main/temboard-agent.pid)\n\n\n\n\nReload configuration\n\n\n$ sudo kill -HUP $(cat /var/lib/temboard-agent/main/temboard-agent.pid)\n\n\n\n\nSmoke test\n\n\nStart the agent, then try:\n\n\n$ curl -k https://127.0.0.1:2345/discover\n$ curl -k -X POST -H \nContent-Type: application/json\n -d '{\nusername\n: \nusername\n, \npassword\n: \npassword\n}' https://127.0.0.1:2345/login\n\n\n\n\nFunctional tests\n\n\n$ sudo apt-get install python-rednose python-nose\n$ cd temboard-agent/test\n$ cp test/configuration.py.sample test/configuration.py\n$ nosetests --rednose -v test_*", 
+            "title": "Install From Source"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#temboard-agent-installation-from-sources-and-configuration", 
+            "text": "", 
+            "title": "temBoard agent installation from sources and configuration"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#dependencies", 
+            "text": "python     2.7  python-setuptools     0.6", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#installation", 
+            "text": "To install Python  setuptools  with  pip :  $ sudo pip install setuptools  Proceed with the installation of the agent:  $ cd temboard/temboard-agent/\n$ sudo python setup.py install", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#prepare-directories-and-files", 
+            "text": "Creation of directories for configuration and SSL files:  $ sudo mkdir /etc/temboard-agent\n$ sudo mkdir /etc/temboard-agent/ssl  Home directory:  $ sudo mkdir /var/lib/temboard-agent\n$ sudo mkdir /var/lib/temboard-agent/main  Logging directory:  $ sudo mkdir /var/log/temboard-agent  Copy the sample configuration file:  $ sudo cp /usr/share/temboard-agent/temboard-agent.conf.sample /etc/temboard-agent/temboard-agent.conf  Copy the logrotate configuration file:  $ sudo cp /usr/share/temboard-agent/temboard-agent.logrotate /etc/logrotate.d/temboard-agent  Change owner and rights:  $ sudo chown -R postgres.postgres /var/lib/temboard-agent\n$ sudo chown postgres.postgres /var/log/temboard-agent\n$ sudo chown -R postgres.postgres /etc/temboard-agent\n$ sudo chmod 0600 /etc/temboard-agent/temboard-agent.conf", 
+            "title": "Prepare directories and files"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#configuration", 
+            "text": "Before starting the agent, see  doc/temboard-agent-configuration.md  for post-installation tasks.", 
+            "title": "Configuration"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#operating-the-agent", 
+            "text": "", 
+            "title": "Operating the agent"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#start", 
+            "text": "$ sudo -u postgres temboard-agent -d -p /var/lib/temboard-agent/main/temboard-agent.pid", 
+            "title": "Start"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#stop", 
+            "text": "$ sudo kill $(cat /var/lib/temboard-agent/main/temboard-agent.pid)", 
+            "title": "Stop"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#reload-configuration", 
+            "text": "$ sudo kill -HUP $(cat /var/lib/temboard-agent/main/temboard-agent.pid)", 
+            "title": "Reload configuration"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#smoke-test", 
+            "text": "Start the agent, then try:  $ curl -k https://127.0.0.1:2345/discover\n$ curl -k -X POST -H  Content-Type: application/json  -d '{ username :  username ,  password :  password }' https://127.0.0.1:2345/login", 
+            "title": "Smoke test"
+        }, 
+        {
+            "location": "/temboard-agent-install-sources/index.html#functional-tests", 
+            "text": "$ sudo apt-get install python-rednose python-nose\n$ cd temboard-agent/test\n$ cp test/configuration.py.sample test/configuration.py\n$ nosetests --rednose -v test_*", 
+            "title": "Functional tests"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html", 
+            "text": "temboard-agent\n configuration\n\n\nSSL certificate\n\n\ntemboard-agent\n embeds a lightweight HTTPS server aimed to serve its API, thus it is required to use a SSL certificate. As long as the agent's API is not reachable through a public interface, usage of self-signed certificates is safe.\n\n\nUsing provided SSL certificate\n\n\ntemboard-agent\n provides a ready to use self-signed SSL certifcate located in \n/usr/share/temboard-agent\n directory, if you don't want to use it, you can create a new one with the \nopenssl\n binary.\n\n\n$ sudo cp /usr/share/temboard-agent/temboard-agent_CHANGEME.key /etc/temboard-agent/ssl/.\n$ sudo cp /usr/share/temboard-agent/temboard-agent_CHANGEME.pem /etc/temboard-agent/ssl/.\n$ sudo chown postgres.postgres /etc/temboard-agent/ssl/*\n\n\n\n\nBuild a new self-signed certificate\n\n\nTo build a new SSL certifcate:\n\n\n$ sudo -u postgres openssl req -new -x509 -days 365 -nodes -out /etc/temboard-agent/ssl/localhost.pem -keyout /etc/temboard-agent/ssl/localhost.key\n\n\n\n\nThen, \nssl_cert_file\n and \nssl_key_file\n parameters from \ntemboard-agent.conf\n file need to be set respectively to \n/etc/temboard-agent/ssl/localhost.pem\n and \n/etc/temboard-agent/ssl/localhost.key\n.\n\n\nCA certificate file\n\n\nThe plugin \nsupervision\n sends periodically collected data to the collector (API served by the temBoard UI web server) through HTTPS. To allow this data flow, the HTTPS client implemented by the agent needs to have the UI's SSL certifcate (.pem) stored in its CA certificate file. temBoard agent embeds a default CA cert. file containing default temBoard UI SSL certificate.\n\n\n$ sudo cp /usr/share/temboard-agent/temboard-agent_ca_certs_CHANGEME.pem /etc/temboard-agent/ssl/ca_certs_localhost.pem\n\n\n\n\nssl_ca_cert_file\n parameter in section \n[supervision]\n from the configuration file needs to be set to \n/etc/temboard-agent/ssl/ca_certs_localhost.pem\n.\n\n\nRestrictions on SSL files\n\n\n$ sudo chmod 0600 /etc/temboard-agent/ssl/*\n\n\n\n\nAccess to PostgreSQL Cluster\n\n\nThe agent needs a PostgreSQL superuser. By default, it is configured to work with \npostgres\n user.\n\n\nTo create a dedicated one with password authentication:\n\n\n$ sudo -u postgres createuser temboard -s -P\n\n\n\n\nThis superuser should be able to connect to the cluster through the unix socket using a password, check \npg_hba.conf\n file and reload configuration.\nExample of \npg_hba.conf\n entry:\n\n\nlocal   postgres        temboard                                  md5\n\n\n\n\nThe access to the PostgreSQL cluster is then configured in the \n[postgresql]\n section of the \n/etc/temboard-agent/temboard-agent.conf\n file.\n\n\nUsers\n\n\nWhen interacting with the agent using HTTP, for example when accessing certain pages in the Web UI, an authentication is required. Accounts are created using the \ntemboard-agent-adduser\n.\n\n\nAdd a first user:\n\n\n$ sudo -u postgres temboard-agent-adduser\n\n\n\n\nRegistration in the Web UI of the supersivion plugin\n\n\nIn the \ntemboard-agent.conf\n file, 2 parameters must be configurated to make the agent interact with the UI. The first one is \nkey\n and is a string used to uniquely identify the agent in the UI, it let the UI allow the agent to push its metric data.\n\n\nThe best way to configure the agent key is to generate a random string of letters and number:\n\n\n$ cat /dev/urandom | tr -dc '[:alnum:]' | fold -w 64 | head -1\n\n\n\n\nThe second is \ncollector_url\n. It lets the agent know where to post its data. Just change the hostname to point to the UI. Since the UI is only reachable using HTTPS, the UI SSL certificate (or CA certificates that has issued it) must be in the filepath where \nssl_ca_cert_file\n points.\n\n\nThe configuration file\n\n\nThe configuration file \ntemboard-agent.conf\n is formated using INI format. Configuration parameters are distributed under sections:\n  - \n[temboard]\n: this is the main section grouping core parameters;\n  - \n[postgresql]\n: parameters related to the PostgreSQL cluster that the agent is connected to;\n  - \n[logging]\n: how and where to log;\n  - \n[dashboard]\n: parameters of the plugin \ndashboard\n;\n  - \n[supervision]\n: plugin \nsupervision\n;\n  - \n[administration]\n: plugin \nadministration\n.\n\n\n[temboard]\n\n\n\n\nport\n: port number that the agent will listen on to serve its \nHTTP API\n. Default: \n2345\n;\n\n\naddress\n: IP v4 address that the agent will listen on. Default: \n0.0.0.0\n (all);\n\n\nusers\n: Path to the file containing the list of the users allowed to use the \nHTTP API\n. Default: \n/etc/temboard-agent/users\n;\n\n\nplugins\n: Array of plugin (name) to load. Default: \n[\"supervision\", \"dashboard\", \"settings\", \"administration\", \"activity\"]\n;\n\n\nssl_cert_file\n: Path to SSL certificate file (.pem) for the embeded HTTPS process serving the API. Default: \n/etc/temboard-agent/ssl/temboard-agent_CHANGEME.pem\n;\n\n\nssl_key_file\n: Path to SSL private key file. Default: \n/etc/temboard-agent/ssl/temboard-agent_CHANGEME.key\n;\n\n\nhome\n: Path to agent home directory, it contains files used to store temporary data. When running multiple agents on the same host, each agent must have its own home directory. Default: \n/var/lib/temboard-agent/main\n.\n\n\nhostname\n: Overload real machine hostname. Must be a valid FQDN. Default: \nNone\n;\n\n\n\n\n[postgresql]\n\n\n\n\nhost\n: Path to PostgreSQL unix socket. Default: \n/var/run/postgresql\n;\n\n\nport\n: PostgreSQL port number. Default: \n5432\n;\n\n\nuser\n: PostgreSQL user, Must be a super-user. Default: \npostgres\n;\n\n\npassword\n: User password. Default: \nNone\n;\n\n\ndbname\n: Database name for the connection. Default: \npostgres\n;\n\n\ninstance\n: Cluster name. Default: \nmain\n.\n\n\nkey\n: Authentication key used to send data to the UI. Default: \nNone\n;\n\n\n\n\n[logging]\n\n\n\n\nmethod\n: Method used to send the logs: \nstderr\n, \nsyslog\n or \nfile\n. Default: \nsyslog\n;\n\n\nfacility\n: Syslog facility. Default: \nlocal0\n;\n\n\ndestination\n: Path to the log file. Default: \n/dev/log\n;\n\n\nlevel\n: Log level, can be set to \nDEBUG\n, \nINFO\n, \nWARNING\n, \nERROR\n or \nCRITICAL\n. Default: \nINFO\n.\n\n\n\n\n[dashboard]\n\n\n\n\nscheduler_interval\n: Time interval, in second, between each run of the process collecting data used to render the dashboard. Default: \n2\n;\n\n\nhistory_length\n: Number of record to keep. Default: \n20\n.\n\n\n\n\n[supervision]\n\n\n\n\ndbnames\n: Database name list (comma separator) to supervise. * for all. Default: \n*\n;\n\n\ncollector_url\n: Collector URL. Default: \nNone\n;\n\n\nprobes\n: List of probes to run, comma separator, * for all. Default: \n*\n;\n\n\nscheduler_interval\n: Interval, in second, between each run of the process executing the probes. Default: \n60\n;\n\n\nssl_ca_cert_file\n: File where to store collector's SSL certificate. Default: \nNone\n.\n\n\n\n\n[administration]\n\n\n\n\npg_ctl\n: External command used to start/stop PostgreSQL. Default: \nNone\n.", 
+            "title": "Configure"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#temboard-agent-configuration", 
+            "text": "", 
+            "title": "temboard-agent configuration"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#ssl-certificate", 
+            "text": "temboard-agent  embeds a lightweight HTTPS server aimed to serve its API, thus it is required to use a SSL certificate. As long as the agent's API is not reachable through a public interface, usage of self-signed certificates is safe.", 
+            "title": "SSL certificate"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#using-provided-ssl-certificate", 
+            "text": "temboard-agent  provides a ready to use self-signed SSL certifcate located in  /usr/share/temboard-agent  directory, if you don't want to use it, you can create a new one with the  openssl  binary.  $ sudo cp /usr/share/temboard-agent/temboard-agent_CHANGEME.key /etc/temboard-agent/ssl/.\n$ sudo cp /usr/share/temboard-agent/temboard-agent_CHANGEME.pem /etc/temboard-agent/ssl/.\n$ sudo chown postgres.postgres /etc/temboard-agent/ssl/*", 
+            "title": "Using provided SSL certificate"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#build-a-new-self-signed-certificate", 
+            "text": "To build a new SSL certifcate:  $ sudo -u postgres openssl req -new -x509 -days 365 -nodes -out /etc/temboard-agent/ssl/localhost.pem -keyout /etc/temboard-agent/ssl/localhost.key  Then,  ssl_cert_file  and  ssl_key_file  parameters from  temboard-agent.conf  file need to be set respectively to  /etc/temboard-agent/ssl/localhost.pem  and  /etc/temboard-agent/ssl/localhost.key .", 
+            "title": "Build a new self-signed certificate"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#ca-certificate-file", 
+            "text": "The plugin  supervision  sends periodically collected data to the collector (API served by the temBoard UI web server) through HTTPS. To allow this data flow, the HTTPS client implemented by the agent needs to have the UI's SSL certifcate (.pem) stored in its CA certificate file. temBoard agent embeds a default CA cert. file containing default temBoard UI SSL certificate.  $ sudo cp /usr/share/temboard-agent/temboard-agent_ca_certs_CHANGEME.pem /etc/temboard-agent/ssl/ca_certs_localhost.pem  ssl_ca_cert_file  parameter in section  [supervision]  from the configuration file needs to be set to  /etc/temboard-agent/ssl/ca_certs_localhost.pem .", 
+            "title": "CA certificate file"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#restrictions-on-ssl-files", 
+            "text": "$ sudo chmod 0600 /etc/temboard-agent/ssl/*", 
+            "title": "Restrictions on SSL files"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#access-to-postgresql-cluster", 
+            "text": "The agent needs a PostgreSQL superuser. By default, it is configured to work with  postgres  user.  To create a dedicated one with password authentication:  $ sudo -u postgres createuser temboard -s -P  This superuser should be able to connect to the cluster through the unix socket using a password, check  pg_hba.conf  file and reload configuration.\nExample of  pg_hba.conf  entry:  local   postgres        temboard                                  md5  The access to the PostgreSQL cluster is then configured in the  [postgresql]  section of the  /etc/temboard-agent/temboard-agent.conf  file.", 
+            "title": "Access to PostgreSQL Cluster"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#users", 
+            "text": "When interacting with the agent using HTTP, for example when accessing certain pages in the Web UI, an authentication is required. Accounts are created using the  temboard-agent-adduser .  Add a first user:  $ sudo -u postgres temboard-agent-adduser", 
+            "title": "Users"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#registration-in-the-web-ui-of-the-supersivion-plugin", 
+            "text": "In the  temboard-agent.conf  file, 2 parameters must be configurated to make the agent interact with the UI. The first one is  key  and is a string used to uniquely identify the agent in the UI, it let the UI allow the agent to push its metric data.  The best way to configure the agent key is to generate a random string of letters and number:  $ cat /dev/urandom | tr -dc '[:alnum:]' | fold -w 64 | head -1  The second is  collector_url . It lets the agent know where to post its data. Just change the hostname to point to the UI. Since the UI is only reachable using HTTPS, the UI SSL certificate (or CA certificates that has issued it) must be in the filepath where  ssl_ca_cert_file  points.", 
+            "title": "Registration in the Web UI of the supersivion plugin"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#the-configuration-file", 
+            "text": "The configuration file  temboard-agent.conf  is formated using INI format. Configuration parameters are distributed under sections:\n  -  [temboard] : this is the main section grouping core parameters;\n  -  [postgresql] : parameters related to the PostgreSQL cluster that the agent is connected to;\n  -  [logging] : how and where to log;\n  -  [dashboard] : parameters of the plugin  dashboard ;\n  -  [supervision] : plugin  supervision ;\n  -  [administration] : plugin  administration .", 
+            "title": "The configuration file"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#temboard", 
+            "text": "port : port number that the agent will listen on to serve its  HTTP API . Default:  2345 ;  address : IP v4 address that the agent will listen on. Default:  0.0.0.0  (all);  users : Path to the file containing the list of the users allowed to use the  HTTP API . Default:  /etc/temboard-agent/users ;  plugins : Array of plugin (name) to load. Default:  [\"supervision\", \"dashboard\", \"settings\", \"administration\", \"activity\"] ;  ssl_cert_file : Path to SSL certificate file (.pem) for the embeded HTTPS process serving the API. Default:  /etc/temboard-agent/ssl/temboard-agent_CHANGEME.pem ;  ssl_key_file : Path to SSL private key file. Default:  /etc/temboard-agent/ssl/temboard-agent_CHANGEME.key ;  home : Path to agent home directory, it contains files used to store temporary data. When running multiple agents on the same host, each agent must have its own home directory. Default:  /var/lib/temboard-agent/main .  hostname : Overload real machine hostname. Must be a valid FQDN. Default:  None ;", 
+            "title": "[temboard]"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#postgresql", 
+            "text": "host : Path to PostgreSQL unix socket. Default:  /var/run/postgresql ;  port : PostgreSQL port number. Default:  5432 ;  user : PostgreSQL user, Must be a super-user. Default:  postgres ;  password : User password. Default:  None ;  dbname : Database name for the connection. Default:  postgres ;  instance : Cluster name. Default:  main .  key : Authentication key used to send data to the UI. Default:  None ;", 
+            "title": "[postgresql]"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#logging", 
+            "text": "method : Method used to send the logs:  stderr ,  syslog  or  file . Default:  syslog ;  facility : Syslog facility. Default:  local0 ;  destination : Path to the log file. Default:  /dev/log ;  level : Log level, can be set to  DEBUG ,  INFO ,  WARNING ,  ERROR  or  CRITICAL . Default:  INFO .", 
+            "title": "[logging]"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#dashboard", 
+            "text": "scheduler_interval : Time interval, in second, between each run of the process collecting data used to render the dashboard. Default:  2 ;  history_length : Number of record to keep. Default:  20 .", 
+            "title": "[dashboard]"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#supervision", 
+            "text": "dbnames : Database name list (comma separator) to supervise. * for all. Default:  * ;  collector_url : Collector URL. Default:  None ;  probes : List of probes to run, comma separator, * for all. Default:  * ;  scheduler_interval : Interval, in second, between each run of the process executing the probes. Default:  60 ;  ssl_ca_cert_file : File where to store collector's SSL certificate. Default:  None .", 
+            "title": "[supervision]"
+        }, 
+        {
+            "location": "/temboard-agent-configuration/index.html#administration", 
+            "text": "pg_ctl : External command used to start/stop PostgreSQL. Default:  None .", 
+            "title": "[administration]"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html", 
+            "text": "temBoard installation from debian package (jessie)\n\n\nPackage repository setup\n\n\nAdd the temboard repository to the configuration of APT. Create /etc/apt/source.list.d/temboard.list with the following contents :\n\n\ndeb https://packages.temboard.io/apt/ jessie main\n\n\n\n\nEnsure APT can handle HTTPS:\n\n\n$ sudo apt-get install apt-transport-https\n\n\n\n\nAdd the GPG key of the repository and update the packages list:\n\n\n$ sudo apt-get install wget ca-certificates\n$ wget -q -O - https://packages.temboard.io/apt/265B525B.asc | sudo apt-key add -\n$ sudo apt-get update\n\n\n\n\nA database in a PostgreSQL 9.5 cluster is required to run temBoard, if you intend to host it on the same machine, add the definition of the repository of the PGPG, by following [their howto]](https://wiki.postgresql.org/wiki/Apt).\n\n\nIn a nutshell, the following packages shall be installed, the \"contribs\" are needed by the \nsupervision\n plugin:\n\n\n$ sudo apt-get install postgresql-9.5 postgresql-contrib-9.5\n\n\n\n\nInstallation\n\n\n$ sudo apt-get install temboard\n\n\n\n\nThe database access must be set up otherwise the temboard service will not start. See \ndoc/temboard-repository-setup.md\n.\n\n\nOperations\n\n\nImportant files and directories\n\n\n\n\n/etc/temboard: stores the \ntemboard.conf\n configuration file and SSL certificates\n\n\n/var/log/temboard: stores the logs\n\n\n/var/run/temboard: stores the PID file\n\n\n\n\nStart\n\n\n$ sudo service temboard start\n\n\n\n\nStatus\n\n\n$ sudo service temboard status\n\n\u25cf temboard.service - LSB: Start temboard\n   Loaded: loaded (/etc/init.d/temboard)\n   Active: active (running) since Thu 2016-08-25 16:18:29 CEST; 16h ago\n  Process: 6373 ExecStart=/etc/init.d/temboard start (code=exited, status=0/SUCCESS)\n   CGroup: /system.slice/temboard.service\n           \u2514\u25006377 /usr/bin/python /usr/bin/temboard -c /etc/temboard/temboard.conf -d -p /var/run/temboard/temboard.pid\n\nAug 25 16:18:29 debian-tbd-ui temboard[6373]: Starting: temboard.\n\n\n\n\nReload configuration\n\n\n$ sudo service temboard reload\n\n\n\n\nStop\n\n\n$ sudo service temboard stop\n\n\n\n\nPackage building\n\n\nTo create a new debian package from \ntemboard\n sources, the packages \ndpkg-dev\n, \ndebhelper\n and \ndh-python\n have to be installed.\n\n\n$ sudo apt-get install dpkg-dev debhelper dh-python\n\n\n\n\nThen, you need to go in \ntemboard/debian\n directory and execute the script \nmake_deb.sh\n. Once the script executed, the .deb file can be found in \n../..\n directory.\n\n\nA source package is also available for Debian Jessie in the packages.temboard.io repository.", 
+            "title": "Install on Debian"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#temboard-installation-from-debian-package-jessie", 
+            "text": "", 
+            "title": "temBoard installation from debian package (jessie)"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#package-repository-setup", 
+            "text": "Add the temboard repository to the configuration of APT. Create /etc/apt/source.list.d/temboard.list with the following contents :  deb https://packages.temboard.io/apt/ jessie main  Ensure APT can handle HTTPS:  $ sudo apt-get install apt-transport-https  Add the GPG key of the repository and update the packages list:  $ sudo apt-get install wget ca-certificates\n$ wget -q -O - https://packages.temboard.io/apt/265B525B.asc | sudo apt-key add -\n$ sudo apt-get update  A database in a PostgreSQL 9.5 cluster is required to run temBoard, if you intend to host it on the same machine, add the definition of the repository of the PGPG, by following [their howto]](https://wiki.postgresql.org/wiki/Apt).  In a nutshell, the following packages shall be installed, the \"contribs\" are needed by the  supervision  plugin:  $ sudo apt-get install postgresql-9.5 postgresql-contrib-9.5", 
+            "title": "Package repository setup"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#installation", 
+            "text": "$ sudo apt-get install temboard  The database access must be set up otherwise the temboard service will not start. See  doc/temboard-repository-setup.md .", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#operations", 
+            "text": "", 
+            "title": "Operations"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#important-files-and-directories", 
+            "text": "/etc/temboard: stores the  temboard.conf  configuration file and SSL certificates  /var/log/temboard: stores the logs  /var/run/temboard: stores the PID file", 
+            "title": "Important files and directories"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#start", 
+            "text": "$ sudo service temboard start", 
+            "title": "Start"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#status", 
+            "text": "$ sudo service temboard status\n\n\u25cf temboard.service - LSB: Start temboard\n   Loaded: loaded (/etc/init.d/temboard)\n   Active: active (running) since Thu 2016-08-25 16:18:29 CEST; 16h ago\n  Process: 6373 ExecStart=/etc/init.d/temboard start (code=exited, status=0/SUCCESS)\n   CGroup: /system.slice/temboard.service\n           \u2514\u25006377 /usr/bin/python /usr/bin/temboard -c /etc/temboard/temboard.conf -d -p /var/run/temboard/temboard.pid\n\nAug 25 16:18:29 debian-tbd-ui temboard[6373]: Starting: temboard.", 
+            "title": "Status"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#reload-configuration", 
+            "text": "$ sudo service temboard reload", 
+            "title": "Reload configuration"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#stop", 
+            "text": "$ sudo service temboard stop", 
+            "title": "Stop"
+        }, 
+        {
+            "location": "/temboard-install-debian/index.html#package-building", 
+            "text": "To create a new debian package from  temboard  sources, the packages  dpkg-dev ,  debhelper  and  dh-python  have to be installed.  $ sudo apt-get install dpkg-dev debhelper dh-python  Then, you need to go in  temboard/debian  directory and execute the script  make_deb.sh . Once the script executed, the .deb file can be found in  ../..  directory.  A source package is also available for Debian Jessie in the packages.temboard.io repository.", 
+            "title": "Package building"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html", 
+            "text": "temBoard installation from rpm package on RHEL / CentOS 6 and later\n\n\nPackage repository setup\n\n\nThe following YUM repository are required to install \ntemboard\n:\n\n\n\n\nExtra Packages for Enterprise Linux\n for newer versions of some dependencies\n\n\nyum.postgresql.org\n for PostgreSQL 9.5\n\n\ntemBoard package repository\n for temBoard\n\n\n\n\nRHEL / CentOS 6\n\n\nInstall the \npackages.temboard.io\n repository by creating the \n/etc/yum.repos.d/temboard.repo\n file with the following contents:\n\n\n[temboard]\nname=temBoard Packages for Enterprise Linux 6\nbaseurl=https://packages.temboard.io/yum/rhel6/\nenabled=1\ngpgcheck=0\n\n\n\n\nThe packages available from \npackages.temboard.io\n relies on the EPEL repository (see \nExtra Packages for Enterprise Linux\n). The easiest way to setup this repository is to use the \nepel-release\n package:\n\n\n# rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n\n\n\nFinally, the PostgreSQL packages from RHEL / CentOS 6 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from \nyum.postgresql.org\n. Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:\n\n\n# rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-centos95-9.5-2.noarch.rpm\n\n\n\n\nRHEL / CentOS 7\n\n\nInstall the \npackages.temboard.io\n repository by creating the \n/etc/yum.repos.d/temboard.repo\n file with the following contents:\n\n\n[temboard]\nname=temBoard Packages for Enterprise Linux 7\nbaseurl=https://packages.temboard.io/yum/rhel7/\nenabled=1\ngpgcheck=0\n\n\n\n\nThe packages available from \npackages.temboard.io\n relies on the EPEL repository (see \nExtra Packages for Enterprise Linux\n). The easiest way to setup this repository is to use the \nepel-release\n package:\n\n\n# rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\n\n\n\n\nFinally, the PostgreSQL packages from RHEL / CentOS 7 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from \nyum.postgresql.org\n. Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:\n\n\n# rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm\n\n\n\n\nInstallation\n\n\nWith the YUM repositories set up, temBoard can be installed with yum:\n\n\n# yum install temboard\n\n\n\n\nThe database access must be set up otherwise the temboard service will not start. See \ndoc/temboard-repository-setup.md\n.\n\n\nFirewall and SELinux\n\n\ntemboard\n works well with the default enforced configuration of SELinux.\n\n\nTo access the temboard web UI, you may need to configure the firewall to allow access on TCP port 8888, which is the default port. It can be configured in \n/etc/temboard/temboard.conf\n, see \ndoc/temboard-configuration.md\n.\n\n\nOperations\n\n\nImportant files and directories\n\n\n\n\n/etc/temboard: stores the \ntemboard.conf\n configuration file and SSL certificates\n\n\n/var/log/temboard: stores the logs\n\n\n/var/run/temboard: stores the PID file\n\n\n\n\nStart\n\n\nOn RHEL / CentOS 6:\n\n\n# service temboard start\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl start temboard\n\n\n\n\nStart at boot time\n\n\nOn RHEL / CentOS 6:\n\n\n# chkconfig temboard on\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl enable temboard\n\n\n\n\nStatus\n\n\nOn RHEL / CentOS 6:\n\n\n# ps auxf | grep temboard\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl status temboard\n\n\n\n\nReload configuration\n\n\nOn RHEL / CentOS 6:\n\n\n# service temboard reload\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl reload temboard\n\n\n\n\nStop\n\n\nOn RHEL / CentOS 6:\n\n\n# service temboard stop\n\n\n\n\nOn RHEL / CentOS 7:\n\n\n# systemctl stop temboard", 
+            "title": "Install On Red Hat"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#temboard-installation-from-rpm-package-on-rhel-centos-6-and-later", 
+            "text": "", 
+            "title": "temBoard installation from rpm package on RHEL / CentOS 6 and later"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#package-repository-setup", 
+            "text": "The following YUM repository are required to install  temboard :   Extra Packages for Enterprise Linux  for newer versions of some dependencies  yum.postgresql.org  for PostgreSQL 9.5  temBoard package repository  for temBoard", 
+            "title": "Package repository setup"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#rhel-centos-6", 
+            "text": "Install the  packages.temboard.io  repository by creating the  /etc/yum.repos.d/temboard.repo  file with the following contents:  [temboard]\nname=temBoard Packages for Enterprise Linux 6\nbaseurl=https://packages.temboard.io/yum/rhel6/\nenabled=1\ngpgcheck=0  The packages available from  packages.temboard.io  relies on the EPEL repository (see  Extra Packages for Enterprise Linux ). The easiest way to setup this repository is to use the  epel-release  package:  # rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  Finally, the PostgreSQL packages from RHEL / CentOS 6 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from  yum.postgresql.org . Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:  # rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-centos95-9.5-2.noarch.rpm", 
+            "title": "RHEL / CentOS 6"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#rhel-centos-7", 
+            "text": "Install the  packages.temboard.io  repository by creating the  /etc/yum.repos.d/temboard.repo  file with the following contents:  [temboard]\nname=temBoard Packages for Enterprise Linux 7\nbaseurl=https://packages.temboard.io/yum/rhel7/\nenabled=1\ngpgcheck=0  The packages available from  packages.temboard.io  relies on the EPEL repository (see  Extra Packages for Enterprise Linux ). The easiest way to setup this repository is to use the  epel-release  package:  # rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  Finally, the PostgreSQL packages from RHEL / CentOS 7 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from  yum.postgresql.org . Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:  # rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm", 
+            "title": "RHEL / CentOS 7"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#installation", 
+            "text": "With the YUM repositories set up, temBoard can be installed with yum:  # yum install temboard  The database access must be set up otherwise the temboard service will not start. See  doc/temboard-repository-setup.md .", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#firewall-and-selinux", 
+            "text": "temboard  works well with the default enforced configuration of SELinux.  To access the temboard web UI, you may need to configure the firewall to allow access on TCP port 8888, which is the default port. It can be configured in  /etc/temboard/temboard.conf , see  doc/temboard-configuration.md .", 
+            "title": "Firewall and SELinux"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#operations", 
+            "text": "", 
+            "title": "Operations"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#important-files-and-directories", 
+            "text": "/etc/temboard: stores the  temboard.conf  configuration file and SSL certificates  /var/log/temboard: stores the logs  /var/run/temboard: stores the PID file", 
+            "title": "Important files and directories"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#start", 
+            "text": "On RHEL / CentOS 6:  # service temboard start  On RHEL / CentOS 7:  # systemctl start temboard", 
+            "title": "Start"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#start-at-boot-time", 
+            "text": "On RHEL / CentOS 6:  # chkconfig temboard on  On RHEL / CentOS 7:  # systemctl enable temboard", 
+            "title": "Start at boot time"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#status", 
+            "text": "On RHEL / CentOS 6:  # ps auxf | grep temboard  On RHEL / CentOS 7:  # systemctl status temboard", 
+            "title": "Status"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#reload-configuration", 
+            "text": "On RHEL / CentOS 6:  # service temboard reload  On RHEL / CentOS 7:  # systemctl reload temboard", 
+            "title": "Reload configuration"
+        }, 
+        {
+            "location": "/temboard-install-rpm/index.html#stop", 
+            "text": "On RHEL / CentOS 6:  # service temboard stop  On RHEL / CentOS 7:  # systemctl stop temboard", 
+            "title": "Stop"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html", 
+            "text": "temBoard installation from sources\n\n\nDependencies\n\n\n\n\npython\n \n \n2.7\n\n\npython-dev\n \n \n2.7\n\n\npython-setuptools\n \n \n0.6\n\n\npython-psycopg2\n \n \n2.6.0\n\n\npython-tornado\n \n \n3.2\n\n\npython-sqlalchemy\n \n \n0.9.8\n\n\n\n\nInstallation\n\n\nInstall dependencies with \npip\n:\n\n\nsudo pip install tornado\nsudo pip install psycopg2\nsudo pip install sqlalchemy\n\n\n\n\nProceed with the installation of the UI:\n\n\n$ cd temboard/\n$ sudo python setup.py install\n\n\n\n\nPrepare directories and files\n\n\nCreation of directories for the configuration file and SSL files:\n\n\n$ sudo mkdir /etc/temboard\n$ sudo mkdir /etc/temboard/ssl\n\n\n\n\nLogging directory:\n\n\n$ sudo mkdir /var/log/temboard\n\n\n\n\nPID directory:\n\n\n$ sudo mkdir /var/run/temboard\n\n\n\n\nCopy the sample configuration file:\n\n\n$ sudo cp /usr/share/temboard/temboard.conf.sample /etc/temboard/temboard.conf\n\n\n\n\nCopy dummies self-signed SSL key and cacerts files:\n\n\n$ sudo cp /usr/share/temboard/temboard_* /etc/temboard/ssl/.\n\n\n\n\nCopy the logrotate configuration file:\n\n\n$ sudo cp /usr/share/temboard/temboard.logrotate /etc/logrotate.d/temboard\n\n\n\n\nUsers\n\n\nsudo useradd -M -r temboard\n\n\n\n\nsudo chown -R temboard.temboard /etc/temboard/\nsudo chown -R temboard.temboard /var/log/temboard/\nsudo chown -R temboard.temboard /var/run/temboard/\nsudo chmod 600 /etc/temboard/ssl/*\nsudo chmod 600 /etc/temboard/temboard.conf\n\n\n\n\nSSL certificate\n\n\nUsing provided SSL certificate\n\n\ntemboard\n provides a ready to use self-signed SSL certifcate located in \n/usr/share/temboard\n directory, if you don't want to use it, you can create a new one with the \nopenssl\n binary.\n\n\n$ sudo cp /usr/share/temboard/temboard_CHANGEME.key /etc/temboard/ssl/.\n$ sudo cp /usr/share/temboard/temboard_CHANGEME.pem /etc/temboard/ssl/.\n$ sudo chown temboard.temboard /etc/temboard/ssl/*\n\n\n\n\nBuild a new self-signed certificate\n\n\nTo build a new SSL certifcate:\n\n\n$ sudo -u temboard openssl req -new -x509 -days 365 -nodes -out /etc/temboard/ssl/localhost.pem -keyout /etc/temboard/ssl/localhost.key\n\n\n\n\nThen, \nssl_cert_file\n and \nssl_key_file\n parameters from \ntemboard.conf\n file need to be set respectively to \n/etc/temboard/ssl/localhost.pem\n and \n/etc/temboard/ssl/localhost.key\n.\n\n\nCA certificate file\n\n\nSome plugins must be able to send requests to \ntemboard-agent\n using the HTTPS API. To allow this data flow, the HTTPS client implemented by \ntemboard\n needs to have each agent's SSL certifcate (.pem) stored in its CA certificate file. temBoard embeds a default CA cert. file containing agent's default SSL certificate.\n\n\n$ sudo cp /usr/share/temboard/temboard_ca_certs_CHANGEME.pem /etc/temboard/ssl/ca_certs_localhost.pem\n\n\n\n\nssl_ca_cert_file\n parameter in section \n[temboard]\n from the configuration file needs to be set to \n/etc/temboard/ssl/ca_certs_localhost.pem\n.\n\n\nRestrictions on SSL files\n\n\n$ sudo chmod 0600 /etc/temboard/ssl/*\n\n\n\n\nRepository\n\n\nThe repository must be set up otherwise the temboard service will not start. See \ndoc/temboard-repository-setup.md\n.\n\n\nOperating \ntemboard\n\n\nStart\n\n\n$ sudo -u temboard temboard -d -p /var/run/temboard/temboard.pid\n\n\n\n\nStop\n\n\n$ sudo kill $(cat /var/run/temboard/temboard.pid)\n\n\n\n\nReload configuration\n\n\n$ sudo kill -HUP $(cat /var/run/temboard/temboard.pid)\n\n\n\n\nInit scripts and systemd service file\n\n\nInit scripts and a systemd service file are available in the \nrpm/\n and \ndebian/\n directories inside the source tree.", 
+            "title": "Intall From source"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#temboard-installation-from-sources", 
+            "text": "", 
+            "title": "temBoard installation from sources"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#dependencies", 
+            "text": "python     2.7  python-dev     2.7  python-setuptools     0.6  python-psycopg2     2.6.0  python-tornado     3.2  python-sqlalchemy     0.9.8", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#installation", 
+            "text": "Install dependencies with  pip :  sudo pip install tornado\nsudo pip install psycopg2\nsudo pip install sqlalchemy  Proceed with the installation of the UI:  $ cd temboard/\n$ sudo python setup.py install", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#prepare-directories-and-files", 
+            "text": "Creation of directories for the configuration file and SSL files:  $ sudo mkdir /etc/temboard\n$ sudo mkdir /etc/temboard/ssl  Logging directory:  $ sudo mkdir /var/log/temboard  PID directory:  $ sudo mkdir /var/run/temboard  Copy the sample configuration file:  $ sudo cp /usr/share/temboard/temboard.conf.sample /etc/temboard/temboard.conf  Copy dummies self-signed SSL key and cacerts files:  $ sudo cp /usr/share/temboard/temboard_* /etc/temboard/ssl/.  Copy the logrotate configuration file:  $ sudo cp /usr/share/temboard/temboard.logrotate /etc/logrotate.d/temboard", 
+            "title": "Prepare directories and files"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#users", 
+            "text": "sudo useradd -M -r temboard  sudo chown -R temboard.temboard /etc/temboard/\nsudo chown -R temboard.temboard /var/log/temboard/\nsudo chown -R temboard.temboard /var/run/temboard/\nsudo chmod 600 /etc/temboard/ssl/*\nsudo chmod 600 /etc/temboard/temboard.conf", 
+            "title": "Users"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#ssl-certificate", 
+            "text": "", 
+            "title": "SSL certificate"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#using-provided-ssl-certificate", 
+            "text": "temboard  provides a ready to use self-signed SSL certifcate located in  /usr/share/temboard  directory, if you don't want to use it, you can create a new one with the  openssl  binary.  $ sudo cp /usr/share/temboard/temboard_CHANGEME.key /etc/temboard/ssl/.\n$ sudo cp /usr/share/temboard/temboard_CHANGEME.pem /etc/temboard/ssl/.\n$ sudo chown temboard.temboard /etc/temboard/ssl/*", 
+            "title": "Using provided SSL certificate"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#build-a-new-self-signed-certificate", 
+            "text": "To build a new SSL certifcate:  $ sudo -u temboard openssl req -new -x509 -days 365 -nodes -out /etc/temboard/ssl/localhost.pem -keyout /etc/temboard/ssl/localhost.key  Then,  ssl_cert_file  and  ssl_key_file  parameters from  temboard.conf  file need to be set respectively to  /etc/temboard/ssl/localhost.pem  and  /etc/temboard/ssl/localhost.key .", 
+            "title": "Build a new self-signed certificate"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#ca-certificate-file", 
+            "text": "Some plugins must be able to send requests to  temboard-agent  using the HTTPS API. To allow this data flow, the HTTPS client implemented by  temboard  needs to have each agent's SSL certifcate (.pem) stored in its CA certificate file. temBoard embeds a default CA cert. file containing agent's default SSL certificate.  $ sudo cp /usr/share/temboard/temboard_ca_certs_CHANGEME.pem /etc/temboard/ssl/ca_certs_localhost.pem  ssl_ca_cert_file  parameter in section  [temboard]  from the configuration file needs to be set to  /etc/temboard/ssl/ca_certs_localhost.pem .", 
+            "title": "CA certificate file"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#restrictions-on-ssl-files", 
+            "text": "$ sudo chmod 0600 /etc/temboard/ssl/*", 
+            "title": "Restrictions on SSL files"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#repository", 
+            "text": "The repository must be set up otherwise the temboard service will not start. See  doc/temboard-repository-setup.md .", 
+            "title": "Repository"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#operating-temboard", 
+            "text": "", 
+            "title": "Operating temboard"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#start", 
+            "text": "$ sudo -u temboard temboard -d -p /var/run/temboard/temboard.pid", 
+            "title": "Start"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#stop", 
+            "text": "$ sudo kill $(cat /var/run/temboard/temboard.pid)", 
+            "title": "Stop"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#reload-configuration", 
+            "text": "$ sudo kill -HUP $(cat /var/run/temboard/temboard.pid)", 
+            "title": "Reload configuration"
+        }, 
+        {
+            "location": "/temboard-install-sources/index.html#init-scripts-and-systemd-service-file", 
+            "text": "Init scripts and a systemd service file are available in the  rpm/  and  debian/  directories inside the source tree.", 
+            "title": "Init scripts and systemd service file"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html", 
+            "text": "Repository Setup\n\n\nThe \nrepository\n is a PostgreSQL (\n=9.5) database. It let temboard store its data, including users, agent registration and metrics data.\n\n\nUsage of plugin \nsupervision\n requires \ntablefunc\n extension. This extension is available as part of the extensions shipped with the source code of PostgreSQL, in the \ncontrib/\n directory. Usually, the \"contrib\" package of PostgreSQL from your Linux distribution has it.\n\n\nConfiguration\n\n\nTo ensure the browsing of the web interface is fast enough, please note the \nwork_mem\n parameter PostgreSQL cluster hosting the repository should be set to at least \n16MB\n.\n\n\nSetup\n\n\nTo acces the \nrepository\n, \ntemboard\n needs to have its own user and database. To create them on a typical PostgreSQL setup, run the following commands:\n\n\nrepository# sudo -u postgres createuser temboard -l -P\nrepository# sudo -u postgres createdb -O temboard temboard\n\n\n\n\nAuthentication with password\n\n\nThe PostgreSQL user \ntemboard\n must be allowed to connect to the repository database using password authentication (\nmd5\n), please ensure the \npg_hba.conf\n is configured accordingly. The password of \ntemboard\n user should be set in the \ntemboard\n configuration file, under section \n[repository]\n, parameter \npassword\n.\n\n\nFor example, if the PostgreSQL cluster is on the same host as temboard, the following lines can be added to the \npg_hba.conf\n file.\n\n\nInsert the following lines before the first line that is not a comment:\n\n\nlocal   temboard   temboard     md5\nhost    temboard   temboard   127.0.0.1/32   md5\nhost    temboard   temboard   ::1/128   md5\n\n\n\n\nIf the PostgreSQL cluster is on th different host, replace \n127.0.0.1/32\n by the IPv4 address (keeping \n/32\n) of the host of temboard and \n::1\n by its IPv6 address (keeping \n/128\n). Reload the configuration of the PostgreSQL cluster to activate the changes.\n\n\nInstallation\n\n\ntemboard\n SQL schema must be loaded. The schema is stored in the SQL files located in \n/usr/share/temboard\n after the installation:\n\n\nrepository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/application.sql temboard\n\n\n\n\nIf you plan to use the plugin \nsupervision\n:\n\n\nrepository# sudo -u postgres psql -U postgres -c \nCREATE EXTENSION tablefunc\n temboard\nrepository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/supervision.sql temboard\n\n\n\n\nConfiguration of temBoard\n\n\nThe last step is to configure temBoard to access the database. Edit \n/etc/temboard/temboard.conf\n and configure the parameters under the \n[repository]\n.\n\n\nThen start the \ntemboard\n service and check the log file (\n/var/log/temboard/temboard.log\n by default).", 
+            "title": "Setup"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#repository-setup", 
+            "text": "The  repository  is a PostgreSQL ( =9.5) database. It let temboard store its data, including users, agent registration and metrics data.  Usage of plugin  supervision  requires  tablefunc  extension. This extension is available as part of the extensions shipped with the source code of PostgreSQL, in the  contrib/  directory. Usually, the \"contrib\" package of PostgreSQL from your Linux distribution has it.", 
+            "title": "Repository Setup"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#configuration", 
+            "text": "To ensure the browsing of the web interface is fast enough, please note the  work_mem  parameter PostgreSQL cluster hosting the repository should be set to at least  16MB .", 
+            "title": "Configuration"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#setup", 
+            "text": "To acces the  repository ,  temboard  needs to have its own user and database. To create them on a typical PostgreSQL setup, run the following commands:  repository# sudo -u postgres createuser temboard -l -P\nrepository# sudo -u postgres createdb -O temboard temboard", 
+            "title": "Setup"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#authentication-with-password", 
+            "text": "The PostgreSQL user  temboard  must be allowed to connect to the repository database using password authentication ( md5 ), please ensure the  pg_hba.conf  is configured accordingly. The password of  temboard  user should be set in the  temboard  configuration file, under section  [repository] , parameter  password .  For example, if the PostgreSQL cluster is on the same host as temboard, the following lines can be added to the  pg_hba.conf  file.  Insert the following lines before the first line that is not a comment:  local   temboard   temboard     md5\nhost    temboard   temboard   127.0.0.1/32   md5\nhost    temboard   temboard   ::1/128   md5  If the PostgreSQL cluster is on th different host, replace  127.0.0.1/32  by the IPv4 address (keeping  /32 ) of the host of temboard and  ::1  by its IPv6 address (keeping  /128 ). Reload the configuration of the PostgreSQL cluster to activate the changes.", 
+            "title": "Authentication with password"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#installation", 
+            "text": "temboard  SQL schema must be loaded. The schema is stored in the SQL files located in  /usr/share/temboard  after the installation:  repository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/application.sql temboard  If you plan to use the plugin  supervision :  repository# sudo -u postgres psql -U postgres -c  CREATE EXTENSION tablefunc  temboard\nrepository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/supervision.sql temboard", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/temboard-repository-setup/index.html#configuration-of-temboard", 
+            "text": "The last step is to configure temBoard to access the database. Edit  /etc/temboard/temboard.conf  and configure the parameters under the  [repository] .  Then start the  temboard  service and check the log file ( /var/log/temboard/temboard.log  by default).", 
+            "title": "Configuration of temBoard"
+        }, 
+        {
+            "location": "/temboard-howto/index.html", 
+            "text": "temBoard UI howto\n\n\nFirst connection\n\n\nOnce \ntemboard\n is up and running, it's time to try a first connection to the web interface with a web browser using \nhttps\n at the address \nhttps://\ntemboard-host\n:8888/\n.\n\n\n\n\nYou should get a login box. The default administration account is \nadmin\n, the password is \nadmin\n. Obviously, this password \nMUST\n be changed as soon as possible. To edit user's profile, please login and go to \nManage\n -\n \nUser list\n then \nEdit\n on the corresponding row.\n\n\n\n\nCurrently, when a logged in user changes its password, the error message \nRestricted area...\n is raised, this behaviour is due to the expiration of user session when the password has been changed. Go back to the login page and fill the form with the new password.\n\n\nUser and user group creation\n\n\nUser acces controls to instances managed by \ntemboard\n are based on \ngroup\n belonging. Each \ninstance\n can belong to \nN\n \ninstance group\n, each \nuser\n can belong to \nN\n \nuser group\n. Each \nuser group\n is granted or not to acces an \ninstance group\n.\nYou must be logged in with a user having administration privileges to manage \nusers\n.\n\n\nUser group creation\n\n\nGo to \nManage\n-\n \nUser groups\n, then \n+ Add a new user group\n. Please fill the form and \nSave\n.\n\n\n\n\nUser group attributes\n\n\n\n\nGroupe name\n: Groupe name, must be unique;\n\n\nDescription\n: Group description.\n\n\n\n\nUser creation\n\n\nTo add a new \nuser\n, go to \nManage\n -\n \nUsers\n, then \n+ Add a new user\n.\n\n\n\n\nUser attributes\n\n\n\n\nUsername\n: User name used for login, must be unique;\n\n\nPassword\n: User password;\n\n\nEmail\n: User email address;\n\n\nGroups\n: \nuser groups\n list the user belongs to;\n\n\nActive\n: Is the user active or not, if not he won't be able to login;\n\n\nAdministrator\n: Does the user get administration rights to create other users, instances etc..\n\n\n\n\nAdd a new instance\n\n\nYou must be logged in with a user having administration privileges.\n\n\nCreate a new instance group\n\n\nTo create a new \ninstance group\n, go to \nManage\n -\n \nInstance groups\n, then \n+ Add a new instance group\n.\n\n\n\n\nInstance group attributes\n\n\n\n\nGroup name\n: Groupe name, must be unique;\n\n\nDescription\n: Groupe description;\n\n\nUser Groups\n: List of \nuser group\n allowed to acces \ninstances\n from this \ninstance group\n.\n\n\n\n\nCreate a new instance\n\n\nAgent setup\n\n\nBefore adding a new instance in \ntemboard\n interface, you'd check that \ntemboard-agent\n is up \n running on the machine hosting the PostgreSQL instance.\nA quick smoke test can be done using \ncurl\n from \ntemboard\n machine:\n\n\ntemboard$ curl https://\ntemboard-agent-address\n:2345/discover\n\n{\nhostname\n: \ndebian-tbd-agent.local\n, \npg_data\n: \n/var/lib/postgresql/9.5/main\n, \npg_port\n: 5432, \nplugins\n: [\nsupervision\n, \ndashboard\n, \nsettings\n, \nadministration\n, \nactivity\n], \nmemory_size\n: 518451200, \npg_version\n: \nPostgreSQL 9.5.4 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit\n, \ncpu\n: 1}\n\n\n\n\nsupervision\n plugin\n\n\nThe \nsupervision\n plugin from \ntemboarg-agent\n is in charge to collect system and PostgreSQL metrics about the host is running on. Periodicaly, these data (JSON object) are sent to \ntemboard\n using an \nhttps\n API. To allow this data flow, a key must be built and shared between \ntemboard\n and the \ntemboard-agent\n.\n\n\n\n\nOn the agent side, the key has to be set in \ntemboard-agent.conf\n file, under the \n[temboard]\n section, the parameter is \nkey\n. Configuration must be reloaed.\n\n\nOn \ntemboard\n UI side, you have to edit the corresponding \ninstance\n and set the same key in \nAgent key\n field.\n\n\n\n\nSee \ndoc/temboard-agent-configuration.md\n for more information.\n\n\nAgent users\n\n\nIn order to use most of the plugins, one or more \nuser\n must be added to each \ntembaord-agent\n. Once the \ntemboard-agent\n is well configured, you can use the script \ntemboard-agent-adduser\n to create a new \nuser\n:\n\n\ntemboard-agent$ sudo -u postgres temboard-agent-adduser\n\nUsername: john\nPassword: \nRetype password: \nDone.\n\n\n\n\nTesting login with this new user can be done using \ncurl\n tool:\n\n\ntemboard-agent$ curl -k -X POST --data '{\nusername\n: \njohn\n, \npassword\n: \nxxxxx\n}' https://127.0.0.1:2345/login\n\n{\nsession\n: \nfe43c3973ec7ca0fc219c00588c97c39afc06fcf91ee1203d19a892466600dae\n}\n\n\n\n\nAdd a new instance\n\n\nThere are two ways for adding a new instance in Temboard UI:\n  * using the UI itself and its online form;\n  * using the script \ntemboard-agent-register\n from the host running the agent.\n\n\nFrom the UI\n\n\nGo to \nManage\n -\n \nInstances\n, then \n+ Add a new instance\n.\n\n\n\n\nInstance attributes\n\n\n\n\nAgent address\n: IPv4 address that the agent is listening on; \n\n\nAgent port\n: Port number that the agent is listening on;\n\n\nAgent secret key\n: Authentication key used by the agent to send data to the collector (\nsupervision\n plugin only);\n\n\nGroups\n: Instance groups this instance belongs to.\n\n\nActive plugins\n: \nplugins\n enabled for this instance. Selected \nplugins\n must be loaded by the \nagent\n too.\n\n\n\n\nOnce \nAgent address\n and \nAgent port\n filled, if the \nagent\n is up \n running, it's possible to retreive values of the following attributes by clicking on the button \nGet instance's informations\n.\n\n\n\n\nNumber of CPU\n: Number of CPU/vCPU;\n\n\nMemory size\n: Memory size in bytes;\n\n\nHostname\n: Machine hostname, FQDN. Must be unique.\n\n\nPostgreSQL data directory\n\n\nPostgreSQL port\n\n\nPostgreSQL version\n\n\n\n\nFrom the command line with \ntemboard-agent-register\n\n\nThis script tries to ease instance/agent registration to Temboard UI.\n\n\nRequirements:\n  * having an agent configured;\n  * \ntemboard-agent\n must be running;\n  * having an HTTPS flow open between the host running the agent and the host running the UI (default port: \n8888\n);\n  * having a user with admin. rights to Temboard UI.\n\n\ntemboard-agent-register\n should be executed from the host running the agent we want to register and works following these steps:\n  - Agent configuration loading;\n  - Data collection about the environnement, using agent's /discover API;\n  - Login to the UI;\n  - Send collected data about the instance/agent to the UI for registration.\n\n\nUsage:\n\n\nUsage: temboard-agent-register [options] \nhttps-temboard-ui-address\n\n\nRegister a couple PostgreSQL instance/agent to a Temboard UI.\n\nOptions:\n  -c CONFIGFILE, --config=CONFIGFILE\n                        Configuration file. Default: /etc/temboard-agent\n                        /temboard-agent.conf\n  -h HOST, --host=HOST  Agent address. Default: localhost\n  -p PORT, --port=PORT  Agent port. Default: 2345\n  -g GROUPS, --groups=GROUPS\n                        Instance groups list, comma separated. Default: none\n  --help                Show this help message and exit.\n\n\n\n\n\nExemple:\n\n\ntemboard-agent-register --groups=instance_group https://ui.temboard.local:8888", 
+            "title": "How To"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#temboard-ui-howto", 
+            "text": "", 
+            "title": "temBoard UI howto"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#first-connection", 
+            "text": "Once  temboard  is up and running, it's time to try a first connection to the web interface with a web browser using  https  at the address  https:// temboard-host :8888/ .   You should get a login box. The default administration account is  admin , the password is  admin . Obviously, this password  MUST  be changed as soon as possible. To edit user's profile, please login and go to  Manage  -   User list  then  Edit  on the corresponding row.   Currently, when a logged in user changes its password, the error message  Restricted area...  is raised, this behaviour is due to the expiration of user session when the password has been changed. Go back to the login page and fill the form with the new password.", 
+            "title": "First connection"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#user-and-user-group-creation", 
+            "text": "User acces controls to instances managed by  temboard  are based on  group  belonging. Each  instance  can belong to  N   instance group , each  user  can belong to  N   user group . Each  user group  is granted or not to acces an  instance group .\nYou must be logged in with a user having administration privileges to manage  users .", 
+            "title": "User and user group creation"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#user-group-creation", 
+            "text": "Go to  Manage -   User groups , then  + Add a new user group . Please fill the form and  Save .", 
+            "title": "User group creation"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#user-group-attributes", 
+            "text": "Groupe name : Groupe name, must be unique;  Description : Group description.", 
+            "title": "User group attributes"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#user-creation", 
+            "text": "To add a new  user , go to  Manage  -   Users , then  + Add a new user .", 
+            "title": "User creation"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#user-attributes", 
+            "text": "Username : User name used for login, must be unique;  Password : User password;  Email : User email address;  Groups :  user groups  list the user belongs to;  Active : Is the user active or not, if not he won't be able to login;  Administrator : Does the user get administration rights to create other users, instances etc..", 
+            "title": "User attributes"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#add-a-new-instance", 
+            "text": "You must be logged in with a user having administration privileges.", 
+            "title": "Add a new instance"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#create-a-new-instance-group", 
+            "text": "To create a new  instance group , go to  Manage  -   Instance groups , then  + Add a new instance group .", 
+            "title": "Create a new instance group"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#instance-group-attributes", 
+            "text": "Group name : Groupe name, must be unique;  Description : Groupe description;  User Groups : List of  user group  allowed to acces  instances  from this  instance group .", 
+            "title": "Instance group attributes"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#create-a-new-instance", 
+            "text": "", 
+            "title": "Create a new instance"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#agent-setup", 
+            "text": "Before adding a new instance in  temboard  interface, you'd check that  temboard-agent  is up   running on the machine hosting the PostgreSQL instance.\nA quick smoke test can be done using  curl  from  temboard  machine:  temboard$ curl https:// temboard-agent-address :2345/discover\n\n{ hostname :  debian-tbd-agent.local ,  pg_data :  /var/lib/postgresql/9.5/main ,  pg_port : 5432,  plugins : [ supervision ,  dashboard ,  settings ,  administration ,  activity ],  memory_size : 518451200,  pg_version :  PostgreSQL 9.5.4 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit ,  cpu : 1}", 
+            "title": "Agent setup"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#supervision-plugin", 
+            "text": "The  supervision  plugin from  temboarg-agent  is in charge to collect system and PostgreSQL metrics about the host is running on. Periodicaly, these data (JSON object) are sent to  temboard  using an  https  API. To allow this data flow, a key must be built and shared between  temboard  and the  temboard-agent .   On the agent side, the key has to be set in  temboard-agent.conf  file, under the  [temboard]  section, the parameter is  key . Configuration must be reloaed.  On  temboard  UI side, you have to edit the corresponding  instance  and set the same key in  Agent key  field.   See  doc/temboard-agent-configuration.md  for more information.", 
+            "title": "supervision plugin"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#agent-users", 
+            "text": "In order to use most of the plugins, one or more  user  must be added to each  tembaord-agent . Once the  temboard-agent  is well configured, you can use the script  temboard-agent-adduser  to create a new  user :  temboard-agent$ sudo -u postgres temboard-agent-adduser\n\nUsername: john\nPassword: \nRetype password: \nDone.  Testing login with this new user can be done using  curl  tool:  temboard-agent$ curl -k -X POST --data '{ username :  john ,  password :  xxxxx }' https://127.0.0.1:2345/login\n\n{ session :  fe43c3973ec7ca0fc219c00588c97c39afc06fcf91ee1203d19a892466600dae }", 
+            "title": "Agent users"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#add-a-new-instance_1", 
+            "text": "There are two ways for adding a new instance in Temboard UI:\n  * using the UI itself and its online form;\n  * using the script  temboard-agent-register  from the host running the agent.", 
+            "title": "Add a new instance"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#from-the-ui", 
+            "text": "Go to  Manage  -   Instances , then  + Add a new instance .", 
+            "title": "From the UI"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#instance-attributes", 
+            "text": "Agent address : IPv4 address that the agent is listening on;   Agent port : Port number that the agent is listening on;  Agent secret key : Authentication key used by the agent to send data to the collector ( supervision  plugin only);  Groups : Instance groups this instance belongs to.  Active plugins :  plugins  enabled for this instance. Selected  plugins  must be loaded by the  agent  too.   Once  Agent address  and  Agent port  filled, if the  agent  is up   running, it's possible to retreive values of the following attributes by clicking on the button  Get instance's informations .   Number of CPU : Number of CPU/vCPU;  Memory size : Memory size in bytes;  Hostname : Machine hostname, FQDN. Must be unique.  PostgreSQL data directory  PostgreSQL port  PostgreSQL version", 
+            "title": "Instance attributes"
+        }, 
+        {
+            "location": "/temboard-howto/index.html#from-the-command-line-with-temboard-agent-register", 
+            "text": "This script tries to ease instance/agent registration to Temboard UI.  Requirements:\n  * having an agent configured;\n  *  temboard-agent  must be running;\n  * having an HTTPS flow open between the host running the agent and the host running the UI (default port:  8888 );\n  * having a user with admin. rights to Temboard UI.  temboard-agent-register  should be executed from the host running the agent we want to register and works following these steps:\n  - Agent configuration loading;\n  - Data collection about the environnement, using agent's /discover API;\n  - Login to the UI;\n  - Send collected data about the instance/agent to the UI for registration.  Usage:  Usage: temboard-agent-register [options]  https-temboard-ui-address \n\nRegister a couple PostgreSQL instance/agent to a Temboard UI.\n\nOptions:\n  -c CONFIGFILE, --config=CONFIGFILE\n                        Configuration file. Default: /etc/temboard-agent\n                        /temboard-agent.conf\n  -h HOST, --host=HOST  Agent address. Default: localhost\n  -p PORT, --port=PORT  Agent port. Default: 2345\n  -g GROUPS, --groups=GROUPS\n                        Instance groups list, comma separated. Default: none\n  --help                Show this help message and exit.  Exemple:  temboard-agent-register --groups=instance_group https://ui.temboard.local:8888", 
+            "title": "From the command line with temboard-agent-register"
+        }
+    ]
+}

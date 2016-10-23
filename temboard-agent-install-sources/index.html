@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="www.dalibo.com">
+  
+  <title>Install From Source - Temboard</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Install From Source";
+    var mkdocs_page_input_path = "temboard-agent-install-sources.md";
+    var mkdocs_page_url = "/temboard-agent-install-sources/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../README/index.html" class="icon icon-home"> Temboard</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../README/index.html">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Agent</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Install From Source</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#temboard-agent-installation-from-sources-and-configuration">temBoard agent installation from sources and configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#dependencies">Dependencies</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#prepare-directories-and-files">Prepare directories and files</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration">Configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#operating-the-agent">Operating the agent</a></li>
+                
+                    <li><a class="toctree-l4" href="#smoke-test">Smoke test</a></li>
+                
+                    <li><a class="toctree-l4" href="#functional-tests">Functional tests</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-configuration/index.html">Configure</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Server</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-sources/index.html">Intall From source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-repository-setup/index.html">Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-howto/index.html">How To</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../README/index.html">Temboard</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../README/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Agent &raquo;</li>
+        
+      
+    
+    <li>Install From Source</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="temboard-agent-installation-from-sources-and-configuration">temBoard agent installation from sources and configuration</h1>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><code>python</code> &ge; <strong>2.7</strong></li>
+<li><code>python-setuptools</code> &ge; <strong>0.6</strong></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To install Python <code>setuptools</code> with <code>pip</code>:</p>
+<pre><code>$ sudo pip install setuptools
+</code></pre>
+
+<p>Proceed with the installation of the agent:</p>
+<pre><code>$ cd temboard/temboard-agent/
+$ sudo python setup.py install
+</code></pre>
+
+<h2 id="prepare-directories-and-files">Prepare directories and files</h2>
+<p>Creation of directories for configuration and SSL files:</p>
+<pre><code>$ sudo mkdir /etc/temboard-agent
+$ sudo mkdir /etc/temboard-agent/ssl
+</code></pre>
+
+<p>Home directory:</p>
+<pre><code>$ sudo mkdir /var/lib/temboard-agent
+$ sudo mkdir /var/lib/temboard-agent/main
+</code></pre>
+
+<p>Logging directory:</p>
+<pre><code>$ sudo mkdir /var/log/temboard-agent
+</code></pre>
+
+<p>Copy the sample configuration file:</p>
+<pre><code>$ sudo cp /usr/share/temboard-agent/temboard-agent.conf.sample /etc/temboard-agent/temboard-agent.conf
+</code></pre>
+
+<p>Copy the logrotate configuration file:</p>
+<pre><code>$ sudo cp /usr/share/temboard-agent/temboard-agent.logrotate /etc/logrotate.d/temboard-agent
+</code></pre>
+
+<p>Change owner and rights:</p>
+<pre><code>$ sudo chown -R postgres.postgres /var/lib/temboard-agent
+$ sudo chown postgres.postgres /var/log/temboard-agent
+$ sudo chown -R postgres.postgres /etc/temboard-agent
+$ sudo chmod 0600 /etc/temboard-agent/temboard-agent.conf
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+<p>Before starting the agent, see <code>doc/temboard-agent-configuration.md</code> for post-installation tasks.</p>
+<h2 id="operating-the-agent">Operating the agent</h2>
+<h3 id="start">Start</h3>
+<pre><code>$ sudo -u postgres temboard-agent -d -p /var/lib/temboard-agent/main/temboard-agent.pid
+</code></pre>
+
+<h3 id="stop">Stop</h3>
+<pre><code>$ sudo kill $(cat /var/lib/temboard-agent/main/temboard-agent.pid)
+</code></pre>
+
+<h3 id="reload-configuration">Reload configuration</h3>
+<pre><code>$ sudo kill -HUP $(cat /var/lib/temboard-agent/main/temboard-agent.pid)
+</code></pre>
+
+<h2 id="smoke-test">Smoke test</h2>
+<p>Start the agent, then try:</p>
+<pre><code>$ curl -k https://127.0.0.1:2345/discover
+$ curl -k -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;username&quot;: &quot;&lt;username&gt;&quot;, &quot;password&quot;: &quot;&lt;password&gt;&quot;}' https://127.0.0.1:2345/login
+</code></pre>
+
+<h2 id="functional-tests">Functional tests</h2>
+<pre><code>$ sudo apt-get install python-rednose python-nose
+$ cd temboard-agent/test
+$ cp test/configuration.py.sample test/configuration.py
+$ nosetests --rednose -v test_*
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../temboard-agent-configuration/index.html" class="btn btn-neutral float-right" title="Configure">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../temboard-agent-install-rpm/index.html" class="btn btn-neutral" title="Install On Red Hat"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2015-2016 <a href="http://www.dalibo.com">dalibo</a></p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../temboard-agent-install-rpm/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../temboard-agent-configuration/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

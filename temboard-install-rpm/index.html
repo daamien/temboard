@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="www.dalibo.com">
+  
+  <title>Install On Red Hat - Temboard</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Install On Red Hat";
+    var mkdocs_page_input_path = "temboard-install-rpm.md";
+    var mkdocs_page_url = "/temboard-install-rpm/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../README/index.html" class="icon icon-home"> Temboard</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../README/index.html">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Agent</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-sources/index.html">Install From Source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-configuration/index.html">Configure</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Server</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Install On Red Hat</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#temboard-installation-from-rpm-package-on-rhel-centos-6-and-later">temBoard installation from rpm package on RHEL / CentOS 6 and later</a></li>
+                
+                    <li><a class="toctree-l4" href="#package-repository-setup">Package repository setup</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#firewall-and-selinux">Firewall and SELinux</a></li>
+                
+                    <li><a class="toctree-l4" href="#operations">Operations</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-sources/index.html">Intall From source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-repository-setup/index.html">Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-howto/index.html">How To</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../README/index.html">Temboard</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../README/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Server &raquo;</li>
+        
+      
+    
+    <li>Install On Red Hat</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="temboard-installation-from-rpm-package-on-rhel-centos-6-and-later">temBoard installation from rpm package on RHEL / CentOS 6 and later</h1>
+<h2 id="package-repository-setup">Package repository setup</h2>
+<p>The following YUM repository are required to install <code>temboard</code>:</p>
+<ul>
+<li><a href="https://fedoraproject.org/wiki/EPEL">Extra Packages for Enterprise Linux</a> for newer versions of some dependencies</li>
+<li><a href="http://yum.postgresql.org/repopackages.php">yum.postgresql.org</a> for PostgreSQL 9.5</li>
+<li><a href="https://packages.temboard.io/yum/">temBoard package repository</a> for temBoard</li>
+</ul>
+<h3 id="rhel-centos-6">RHEL / CentOS 6</h3>
+<p>Install the <code>packages.temboard.io</code> repository by creating the <code>/etc/yum.repos.d/temboard.repo</code> file with the following contents:</p>
+<pre><code>[temboard]
+name=temBoard Packages for Enterprise Linux 6
+baseurl=https://packages.temboard.io/yum/rhel6/
+enabled=1
+gpgcheck=0
+</code></pre>
+
+<p>The packages available from <code>packages.temboard.io</code> relies on the EPEL repository (see <a href="https://fedoraproject.org/wiki/EPEL">Extra Packages for Enterprise Linux</a>). The easiest way to setup this repository is to use the <code>epel-release</code> package:</p>
+<pre><code># rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+</code></pre>
+
+<p>Finally, the PostgreSQL packages from RHEL / CentOS 6 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from <a href="http://yum.postgresql.org/repopackages.php">yum.postgresql.org</a>. Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:</p>
+<pre><code># rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-centos95-9.5-2.noarch.rpm
+</code></pre>
+
+<h3 id="rhel-centos-7">RHEL / CentOS 7</h3>
+<p>Install the <code>packages.temboard.io</code> repository by creating the <code>/etc/yum.repos.d/temboard.repo</code> file with the following contents:</p>
+<pre><code>[temboard]
+name=temBoard Packages for Enterprise Linux 7
+baseurl=https://packages.temboard.io/yum/rhel7/
+enabled=1
+gpgcheck=0
+</code></pre>
+
+<p>The packages available from <code>packages.temboard.io</code> relies on the EPEL repository (see <a href="https://fedoraproject.org/wiki/EPEL">Extra Packages for Enterprise Linux</a>). The easiest way to setup this repository is to use the <code>epel-release</code> package:</p>
+<pre><code># rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+</code></pre>
+
+<p>Finally, the PostgreSQL packages from RHEL / CentOS 7 being too old, you need to add the YUM repository of the PostgreSQL Global Development Group, from <a href="http://yum.postgresql.org/repopackages.php">yum.postgresql.org</a>. Here is an example to install PostgreSQL 9.5, you should check the site and use the latest production version of PostgreSQL. PostgreSQL 9.5 or newer is required:</p>
+<pre><code># rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
+</code></pre>
+
+<h2 id="installation">Installation</h2>
+<p>With the YUM repositories set up, temBoard can be installed with yum:</p>
+<pre><code># yum install temboard
+</code></pre>
+
+<p>The database access must be set up otherwise the temboard service will not start. See <code>doc/temboard-repository-setup.md</code>.</p>
+<h2 id="firewall-and-selinux">Firewall and SELinux</h2>
+<p><code>temboard</code> works well with the default enforced configuration of SELinux.</p>
+<p>To access the temboard web UI, you may need to configure the firewall to allow access on TCP port 8888, which is the default port. It can be configured in <code>/etc/temboard/temboard.conf</code>, see <code>doc/temboard-configuration.md</code>.</p>
+<h2 id="operations">Operations</h2>
+<h3 id="important-files-and-directories">Important files and directories</h3>
+<ul>
+<li>/etc/temboard: stores the <code>temboard.conf</code> configuration file and SSL certificates</li>
+<li>/var/log/temboard: stores the logs</li>
+<li>/var/run/temboard: stores the PID file</li>
+</ul>
+<h3 id="start">Start</h3>
+<p>On RHEL / CentOS 6:</p>
+<pre><code># service temboard start
+</code></pre>
+
+<p>On RHEL / CentOS 7:</p>
+<pre><code># systemctl start temboard
+</code></pre>
+
+<h3 id="start-at-boot-time">Start at boot time</h3>
+<p>On RHEL / CentOS 6:</p>
+<pre><code># chkconfig temboard on
+</code></pre>
+
+<p>On RHEL / CentOS 7:</p>
+<pre><code># systemctl enable temboard
+</code></pre>
+
+<h3 id="status">Status</h3>
+<p>On RHEL / CentOS 6:</p>
+<pre><code># ps auxf | grep temboard
+</code></pre>
+
+<p>On RHEL / CentOS 7:</p>
+<pre><code># systemctl status temboard
+</code></pre>
+
+<h3 id="reload-configuration">Reload configuration</h3>
+<p>On RHEL / CentOS 6:</p>
+<pre><code># service temboard reload
+</code></pre>
+
+<p>On RHEL / CentOS 7:</p>
+<pre><code># systemctl reload temboard
+</code></pre>
+
+<h3 id="stop">Stop</h3>
+<p>On RHEL / CentOS 6:</p>
+<pre><code># service temboard stop
+</code></pre>
+
+<p>On RHEL / CentOS 7:</p>
+<pre><code># systemctl stop temboard
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../temboard-install-sources/index.html" class="btn btn-neutral float-right" title="Intall From source">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../temboard-install-debian/index.html" class="btn btn-neutral" title="Install on Debian"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2015-2016 <a href="http://www.dalibo.com">dalibo</a></p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../temboard-install-debian/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../temboard-install-sources/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

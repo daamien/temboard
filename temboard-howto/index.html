@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="www.dalibo.com">
+  
+  <title>How To - Temboard</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How To";
+    var mkdocs_page_input_path = "temboard-howto.md";
+    var mkdocs_page_url = "/temboard-howto/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../README/index.html" class="icon icon-home"> Temboard</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../README/index.html">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Agent</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-sources/index.html">Install From Source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-configuration/index.html">Configure</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Server</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-sources/index.html">Intall From source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-repository-setup/index.html">Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">How To</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#temboard-ui-howto">temBoard UI howto</a></li>
+                
+                    <li><a class="toctree-l4" href="#first-connection">First connection</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#user-and-user-group-creation">User and user group creation</a></li>
+                
+                    <li><a class="toctree-l4" href="#user-group-creation">User group creation</a></li>
+                
+                    <li><a class="toctree-l4" href="#user-creation">User creation</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#add-a-new-instance">Add a new instance</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-new-instance-group">Create a new instance group</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-new-instance">Create a new instance</a></li>
+                
+                    <li><a class="toctree-l4" href="#from-the-command-line-with-temboard-agent-register">From the command line with temboard-agent-register</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../README/index.html">Temboard</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../README/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Server &raquo;</li>
+        
+      
+    
+    <li>How To</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="temboard-ui-howto">temBoard UI howto</h1>
+<h2 id="first-connection">First connection</h2>
+<p>Once <code>temboard</code> is up and running, it's time to try a first connection to the web interface with a web browser using <code>https</code> at the address <code>https://&lt;temboard-host&gt;:8888/</code>.</p>
+<p><img alt="Login" src="../sc/login.png" /></p>
+<p>You should get a login box. The default administration account is <code>admin</code>, the password is <code>admin</code>. Obviously, this password <strong>MUST</strong> be changed as soon as possible. To edit user's profile, please login and go to <code>Manage</code> -&gt; <code>User list</code> then <code>Edit</code> on the corresponding row.</p>
+<p><img alt="Edit admin user" src="../sc/edit-user-admin.png" /></p>
+<p>Currently, when a logged in user changes its password, the error message <code>Restricted area...</code> is raised, this behaviour is due to the expiration of user session when the password has been changed. Go back to the login page and fill the form with the new password.</p>
+<h1 id="user-and-user-group-creation">User and user group creation</h1>
+<p>User acces controls to instances managed by <code>temboard</code> are based on <code>group</code> belonging. Each <code>instance</code> can belong to <em>N</em> <code>instance group</code>, each <code>user</code> can belong to <em>N</em> <code>user group</code>. Each <code>user group</code> is granted or not to acces an <code>instance group</code>.
+You must be logged in with a user having administration privileges to manage <code>users</code>.</p>
+<h2 id="user-group-creation">User group creation</h2>
+<p>Go to <code>Manage</code>-&gt; <code>User groups</code>, then <code>+ Add a new user group</code>. Please fill the form and <code>Save</code>.</p>
+<p><img alt="Add user group" src="../sc/add-user-group.png" /></p>
+<h3 id="user-group-attributes">User group attributes</h3>
+<ul>
+<li><code>Groupe name</code>: Groupe name, must be unique;</li>
+<li><code>Description</code>: Group description.</li>
+</ul>
+<h2 id="user-creation">User creation</h2>
+<p>To add a new <code>user</code>, go to <code>Manage</code> -&gt; <code>Users</code>, then <code>+ Add a new user</code>.</p>
+<p><img alt="Add user" src="../sc/add-user.png" /></p>
+<h3 id="user-attributes">User attributes</h3>
+<ul>
+<li><code>Username</code>: User name used for login, must be unique;</li>
+<li><code>Password</code>: User password;</li>
+<li><code>Email</code>: User email address;</li>
+<li><code>Groups</code>: <code>user groups</code> list the user belongs to;</li>
+<li><code>Active</code>: Is the user active or not, if not he won't be able to login;</li>
+<li><code>Administrator</code>: Does the user get administration rights to create other users, instances etc..</li>
+</ul>
+<h1 id="add-a-new-instance">Add a new instance</h1>
+<p>You must be logged in with a user having administration privileges.</p>
+<h2 id="create-a-new-instance-group">Create a new instance group</h2>
+<p>To create a new <code>instance group</code>, go to <code>Manage</code> -&gt; <code>Instance groups</code>, then <code>+ Add a new instance group</code>.</p>
+<p><img alt="Add instance group" src="../sc/add-instance-group.png" /></p>
+<h3 id="instance-group-attributes">Instance group attributes</h3>
+<ul>
+<li><code>Group name</code>: Groupe name, must be unique;</li>
+<li><code>Description</code>: Groupe description;</li>
+<li><code>User Groups</code>: List of <code>user group</code> allowed to acces <code>instances</code> from this <code>instance group</code>.</li>
+</ul>
+<h2 id="create-a-new-instance">Create a new instance</h2>
+<h3 id="agent-setup">Agent setup</h3>
+<p>Before adding a new instance in <code>temboard</code> interface, you'd check that <code>temboard-agent</code> is up &amp; running on the machine hosting the PostgreSQL instance.
+A quick smoke test can be done using <code>curl</code> from <code>temboard</code> machine:</p>
+<pre><code>temboard$ curl https://&lt;temboard-agent-address&gt;:2345/discover
+
+{&quot;hostname&quot;: &quot;debian-tbd-agent.local&quot;, &quot;pg_data&quot;: &quot;/var/lib/postgresql/9.5/main&quot;, &quot;pg_port&quot;: 5432, &quot;plugins&quot;: [&quot;supervision&quot;, &quot;dashboard&quot;, &quot;settings&quot;, &quot;administration&quot;, &quot;activity&quot;], &quot;memory_size&quot;: 518451200, &quot;pg_version&quot;: &quot;PostgreSQL 9.5.4 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit&quot;, &quot;cpu&quot;: 1}
+</code></pre>
+
+<h4 id="supervision-plugin"><code>supervision</code> plugin</h4>
+<p>The <code>supervision</code> plugin from <code>temboarg-agent</code> is in charge to collect system and PostgreSQL metrics about the host is running on. Periodicaly, these data (JSON object) are sent to <code>temboard</code> using an <code>https</code> API. To allow this data flow, a key must be built and shared between <code>temboard</code> and the <code>temboard-agent</code>.</p>
+<ul>
+<li>On the agent side, the key has to be set in <code>temboard-agent.conf</code> file, under the <code>[temboard]</code> section, the parameter is <code>key</code>. Configuration must be reloaed.</li>
+<li>On <code>temboard</code> UI side, you have to edit the corresponding <code>instance</code> and set the same key in <code>Agent key</code> field.</li>
+</ul>
+<p>See <code>doc/temboard-agent-configuration.md</code> for more information.</p>
+<h4 id="agent-users">Agent users</h4>
+<p>In order to use most of the plugins, one or more <code>user</code> must be added to each <code>tembaord-agent</code>. Once the <code>temboard-agent</code> is well configured, you can use the script <code>temboard-agent-adduser</code> to create a new <code>user</code>:</p>
+<pre><code>temboard-agent$ sudo -u postgres temboard-agent-adduser
+
+Username: john
+Password: 
+Retype password: 
+Done.
+</code></pre>
+
+<p>Testing login with this new user can be done using <code>curl</code> tool:</p>
+<pre><code>temboard-agent$ curl -k -X POST --data '{&quot;username&quot;: &quot;john&quot;, &quot;password&quot;: &quot;xxxxx&quot;}' https://127.0.0.1:2345/login
+
+{&quot;session&quot;: &quot;fe43c3973ec7ca0fc219c00588c97c39afc06fcf91ee1203d19a892466600dae&quot;}
+</code></pre>
+
+<h3 id="add-a-new-instance_1">Add a new instance</h3>
+<p>There are two ways for adding a new instance in Temboard UI:
+  * using the UI itself and its online form;
+  * using the script <code>temboard-agent-register</code> from the host running the agent.</p>
+<h3 id="from-the-ui">From the UI</h3>
+<p>Go to <code>Manage</code> -&gt; <code>Instances</code>, then <code>+ Add a new instance</code>.</p>
+<p><img alt="Add instance" src="../sc/add-instance.png" /></p>
+<h3 id="instance-attributes">Instance attributes</h3>
+<ul>
+<li><code>Agent address</code>: IPv4 address that the agent is listening on; </li>
+<li><code>Agent port</code>: Port number that the agent is listening on;</li>
+<li><code>Agent secret key</code>: Authentication key used by the agent to send data to the collector (<code>supervision</code> plugin only);</li>
+<li><code>Groups</code>: Instance groups this instance belongs to.</li>
+<li><code>Active plugins</code>: <code>plugins</code> enabled for this instance. Selected <code>plugins</code> must be loaded by the <code>agent</code> too.</li>
+</ul>
+<p>Once <code>Agent address</code> and <code>Agent port</code> filled, if the <code>agent</code> is up &amp; running, it's possible to retreive values of the following attributes by clicking on the button <code>Get instance's informations</code>.</p>
+<ul>
+<li><code>Number of CPU</code>: Number of CPU/vCPU;</li>
+<li><code>Memory size</code>: Memory size in bytes;</li>
+<li><code>Hostname</code>: Machine hostname, FQDN. Must be unique.</li>
+<li><code>PostgreSQL data directory</code></li>
+<li><code>PostgreSQL port</code></li>
+<li><code>PostgreSQL version</code></li>
+</ul>
+<h2 id="from-the-command-line-with-temboard-agent-register">From the command line with <code>temboard-agent-register</code></h2>
+<p>This script tries to ease instance/agent registration to Temboard UI.</p>
+<p>Requirements:
+  * having an agent configured;
+  * <code>temboard-agent</code> must be running;
+  * having an HTTPS flow open between the host running the agent and the host running the UI (default port: <code>8888</code>);
+  * having a user with admin. rights to Temboard UI.</p>
+<p><code>temboard-agent-register</code> should be executed from the host running the agent we want to register and works following these steps:
+  - Agent configuration loading;
+  - Data collection about the environnement, using agent's /discover API;
+  - Login to the UI;
+  - Send collected data about the instance/agent to the UI for registration.</p>
+<p>Usage:</p>
+<pre><code>Usage: temboard-agent-register [options] &lt;https-temboard-ui-address&gt;
+
+Register a couple PostgreSQL instance/agent to a Temboard UI.
+
+Options:
+  -c CONFIGFILE, --config=CONFIGFILE
+                        Configuration file. Default: /etc/temboard-agent
+                        /temboard-agent.conf
+  -h HOST, --host=HOST  Agent address. Default: localhost
+  -p PORT, --port=PORT  Agent port. Default: 2345
+  -g GROUPS, --groups=GROUPS
+                        Instance groups list, comma separated. Default: none
+  --help                Show this help message and exit.
+
+</code></pre>
+
+<p>Exemple:</p>
+<pre><code>temboard-agent-register --groups=instance_group https://ui.temboard.local:8888
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../temboard-repository-setup/index.html" class="btn btn-neutral" title="Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2015-2016 <a href="http://www.dalibo.com">dalibo</a></p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../temboard-repository-setup/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

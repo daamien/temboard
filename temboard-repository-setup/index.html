@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="www.dalibo.com">
+  
+  <title>Setup - Temboard</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Setup";
+    var mkdocs_page_input_path = "temboard-repository-setup.md";
+    var mkdocs_page_url = "/temboard-repository-setup/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../README/index.html" class="icon icon-home"> Temboard</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../README/index.html">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Agent</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-install-sources/index.html">Install From Source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-agent-configuration/index.html">Configure</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Server</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-debian/index.html">Install on Debian</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-rpm/index.html">Install On Red Hat</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-install-sources/index.html">Intall From source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Setup</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#repository-setup">Repository Setup</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration">Configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#setup">Setup</a></li>
+                
+                    <li><a class="toctree-l4" href="#authentication-with-password">Authentication with password</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration-of-temboard">Configuration of temBoard</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../temboard-howto/index.html">How To</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../README/index.html">Temboard</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../README/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Server &raquo;</li>
+        
+      
+    
+    <li>Setup</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="repository-setup">Repository Setup</h1>
+<p>The <code>repository</code> is a PostgreSQL (&gt;=9.5) database. It let temboard store its data, including users, agent registration and metrics data.</p>
+<p>Usage of plugin <code>supervision</code> requires <code>tablefunc</code> extension. This extension is available as part of the extensions shipped with the source code of PostgreSQL, in the <code>contrib/</code> directory. Usually, the "contrib" package of PostgreSQL from your Linux distribution has it.</p>
+<h2 id="configuration">Configuration</h2>
+<p>To ensure the browsing of the web interface is fast enough, please note the <code>work_mem</code> parameter PostgreSQL cluster hosting the repository should be set to at least <code>16MB</code>.</p>
+<h2 id="setup">Setup</h2>
+<p>To acces the <code>repository</code>, <code>temboard</code> needs to have its own user and database. To create them on a typical PostgreSQL setup, run the following commands:</p>
+<pre><code>repository# sudo -u postgres createuser temboard -l -P
+repository# sudo -u postgres createdb -O temboard temboard
+</code></pre>
+
+<h2 id="authentication-with-password">Authentication with password</h2>
+<p>The PostgreSQL user <code>temboard</code> must be allowed to connect to the repository database using password authentication (<code>md5</code>), please ensure the <code>pg_hba.conf</code> is configured accordingly. The password of <code>temboard</code> user should be set in the <code>temboard</code> configuration file, under section <code>[repository]</code>, parameter <code>password</code>.</p>
+<p>For example, if the PostgreSQL cluster is on the same host as temboard, the following lines can be added to the <code>pg_hba.conf</code> file.</p>
+<p>Insert the following lines before the first line that is not a comment:</p>
+<pre><code>local   temboard   temboard     md5
+host    temboard   temboard   127.0.0.1/32   md5
+host    temboard   temboard   ::1/128   md5
+</code></pre>
+
+<p>If the PostgreSQL cluster is on th different host, replace <code>127.0.0.1/32</code> by the IPv4 address (keeping <code>/32</code>) of the host of temboard and <code>::1</code> by its IPv6 address (keeping <code>/128</code>). Reload the configuration of the PostgreSQL cluster to activate the changes.</p>
+<h2 id="installation">Installation</h2>
+<p><code>temboard</code> SQL schema must be loaded. The schema is stored in the SQL files located in <code>/usr/share/temboard</code> after the installation:</p>
+<pre><code>repository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/application.sql temboard
+</code></pre>
+
+<p>If you plan to use the plugin <code>supervision</code>:</p>
+<pre><code>repository# sudo -u postgres psql -U postgres -c &quot;CREATE EXTENSION tablefunc&quot; temboard
+repository# psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/supervision.sql temboard
+</code></pre>
+
+<h2 id="configuration-of-temboard">Configuration of temBoard</h2>
+<p>The last step is to configure temBoard to access the database. Edit <code>/etc/temboard/temboard.conf</code> and configure the parameters under the <code>[repository]</code>.</p>
+<p>Then start the <code>temboard</code> service and check the log file (<code>/var/log/temboard/temboard.log</code> by default).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../temboard-howto/index.html" class="btn btn-neutral float-right" title="How To">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../temboard-install-sources/index.html" class="btn btn-neutral" title="Intall From source"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2015-2016 <a href="http://www.dalibo.com">dalibo</a></p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/dalibo/temboard/tree/master/doc" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../temboard-install-sources/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../temboard-howto/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
