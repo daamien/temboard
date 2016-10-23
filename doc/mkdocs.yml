@@ -1,0 +1,13 @@
+site_name: Temboard
+docs_dir: .
+pages:
+- Home: README.md
+- Agent:
+   - 'Install on Debian': temboard-agent-install-debian.md
+   - 'Install On Red Hat': temboard-agent-install-rpm.md
+   - 'Install From Source': temboard-agent-install-sources.md
+#   - 'Configure': temboard-agent-configuration.md	
+- Server:
+   - 'Install on Debian': temboard-install-debian.md
+#   - 'Install on Debian': temboard-agent-install-rpm.md	
+theme: readthedocs
