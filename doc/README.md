@@ -5,9 +5,9 @@ Temboard is a powerful mangement tool for PostgreSQL. You can use it monitor, op
 
 Temboard is composed of 2 basic elements:
 
-* An lightweight [agent](#The-Agent) that you need to install on every PostgreSQL server you want to manage
+* An lightweight [agent](#the-agent) that you need to install on every PostgreSQL server you want to manage
 
-* A central [server](#The-Server) that will control the agents and collect metrics from them.
+* A central [server](#the-server) that will control the agents and collect metrics from them.
 
 # The Agent
 
