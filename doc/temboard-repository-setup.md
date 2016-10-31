@@ -43,7 +43,7 @@ psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/sql/application.
 If you plan to use the plugin `supervision`:
 ```
 sudo -u postgres psql -U postgres -c "CREATE EXTENSION tablefunc" temboard
-psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/supervision.sql temboard
+psql -U temboard -1 -v'ON_ERROR_STOP=on' -f /usr/share/temboard/plugins/supervision/sql/supervision.sql temboard
 ```
 
 ## Configuration of temBoard
