@@ -1,0 +1,8 @@
+# /etc/cron.d/temboard_supervision
+#
+#  This script aggregates data collected from the various temboard agents,
+#  
+#
+
+# Aggrate metrics every 15 minutes
+*/15 * * * *     temboard  [ -x /usr/share/temboard/plugins/supervision/metric-aggregator ] && /usr/share/temboard/plugins/supervision/metric-aggregator
