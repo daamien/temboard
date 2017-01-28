@@ -2,10 +2,10 @@
 
 ## Package repository setup
 
-Add the temboard repository to the configuration of APT. Create /etc/apt/sources.list.d/temboard.list with the following contents :
+Add the temboard repository to the configuration of APT:
 
 ```
-deb https://packages.temboard.io/apt/ jessie main
+echo 'deb https://packages.temboard.io/apt/ jessie main' > /etc/apt/sources.list.d/temboard.list
 ```
 
 Ensure APT can handle HTTPS:
@@ -20,7 +20,7 @@ Add the GPG key of the repository and update the packages list:
 sudo apt-get install wget ca-certificates
 wget -q -O - https://packages.temboard.io/apt/265B525B.asc | sudo apt-key add -
 sudo apt-get update
-
+```
 
 ## Installation
 
@@ -30,7 +30,7 @@ sudo apt-get install temboard-agent
 
 ## Configuration
 
-Before starting the agent, see `doc/temboard-agent-configuration.md` for post-installation tasks.
+Before starting the agent, see [temboard-agent configuration](temboard-agent-configuration.md) for post-installation tasks.
 
 ## Operations
 
