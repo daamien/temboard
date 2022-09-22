@@ -109,14 +109,12 @@ Beware that two Postgres instances are set up with replication. The primary
 instance may be either postgres0 or postgres1. See below for details.
 
 
-You can also log into the server with:
+You can list all the services of development environment with:
 
 ```console 
-$ docker-compose exec ui /bin/bash
-root@dd93f2081d6d:/var/lib/temboard# temboard --version
-temBoard 8.0b1 (/usr/local/bin/temboard)
-...
+$ docker-compose config --services
 ```
+
 
 ## psql for Monitored PostgreSQL
 
