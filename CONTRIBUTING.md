@@ -109,6 +109,15 @@ Beware that two Postgres instances are set up with replication. The primary
 instance may be either postgres0 or postgres1. See below for details.
 
 
+You can also log into the server with:
+
+```console 
+$ docker-compose exec ui /bin/bash
+root@dd93f2081d6d:/var/lib/temboard# temboard --version
+temBoard 8.0b1 (/usr/local/bin/temboard)
+...
+```
+
 ## psql for Monitored PostgreSQL
 
 If you need to execute queries in monitored PostgreSQL instances, execute psql
